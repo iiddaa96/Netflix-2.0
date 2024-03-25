@@ -58,14 +58,13 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               display: { xs: "none", md: "inline-block" },
-              borderRadius: "50%",
               overflow: "hidden",
-              width: 70,
-              height: 70,
+              // width: 70,
+              // height: 70,
               marginRight: "30rem",
             }}
           >
-            <Image src={LogoImage} height={75} width={75} alt="Logo" />
+            <Image src={LogoImage} height={50} width={130} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
