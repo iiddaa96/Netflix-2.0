@@ -43,10 +43,21 @@ function MovieList() {
   return (
     <div style={{ backgroundColor: "black" }}>
       {/* Trailer Box */}
-      <div className="trailer-box">
+      <div
+        className="trailer-box"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <iframe
-          width="1386"
-          height="450"
+          style={{
+            width: "100%",
+            height: "30rem",
+            display: "flex",
+            alignContent: "center",
+          }}
           src="https://www.youtube.com/embed/U2Qp5pL3ovA"
           title="Dune Part Two Trailer"
           allowFullScreen
@@ -55,13 +66,15 @@ function MovieList() {
 
       {/* Movie Carousel */}
       <div>
-        <h2 style={{ color: "white" }}>All movies</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
-
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
-            <img src={movie.thumbnail} style={{ maxWidth: "250px" }} />
+            <img
+              src={movie.thumbnail}
+              style={{ maxWidth: "275px", paddingLeft: "20px" }}
+            />
           </div>
         ))}
       </Slider>
