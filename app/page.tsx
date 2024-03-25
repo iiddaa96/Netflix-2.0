@@ -51,7 +51,7 @@ function MovieList() {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      {/* Trailer Box */}
+      {/* Trailer */}
       <div
         className="trailer-box"
         style={{
@@ -77,6 +77,7 @@ function MovieList() {
       <div>
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
+      {/* Karusell för filmerna */}
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
@@ -89,6 +90,7 @@ function MovieList() {
                   alt={movie.title}
                 />
               </CardActionArea>
+              {/* Knapp för favoriter */}
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <IconButton
