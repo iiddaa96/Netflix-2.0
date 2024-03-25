@@ -1,30 +1,30 @@
 const movies = [
   {
-    "title": "The Shawshank Redemption",
-    "year": 1994,
+    "title": "Dune part 2",
+    "year": 2024,
     "rating": "R",
-    "actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
-    "genre": "Drama",
-    "synopsis": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
-    "thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+    "actors": ["Timothée Chalamet", "	Zendaya", "Rebecca Ferguson"],
+    "genre": "Action",
+    "synopsis": "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+    "thumbnail": "https://catalog.cinema-api.com/cf/images/ncg-images/edbfbcb45ea545a9b7d1e1ebee985da6.jpg?version=DCB5DFA78376CEE700EC24E2CEC54184&q=70&fm=webp&w=480"
   },
   {
-    "title": "The Godfather",
-    "year": 1972,
+    "title": "Kung Fu Panda 4",
+    "year": 2024,
     "rating": "R",
-    "actors": ["Marlon Brando", "Al Pacino", "James Caan"],
-    "genre": "Crime, Drama",
-    "synopsis": "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
-    "thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+    "actors": ["Jack Black", "Glenn Berger", "Darren Lembke"],
+    "genre": "Adventure, Drama",
+    "synopsis": "After Po is tapped to become the Spiritual Leader of the Valley of Peace, he needs to find and train a new Dragon Warrior, while a wicked sorceress plans to re-summon all the master villains whom Po has vanquished to the spirit realm.",
+    "thumbnail": "https://catalog.cinema-api.com/cf/images/ncg-images/de822aa62ab94b2c843395d75be8ac3a.jpg?version=26CE89A4509F76CD8B02527286D74448&q=70&fm=webp&w=480"
   },
   {
-    "title": "The Godfather: Part II",
-    "year": 1974,
+    "title": "Oppenheimer",
+    "year": 2023,
     "rating": "R",
-    "actors": ["Al Pacino", "Robert De Niro", "Robert Duvall"],
-    "genre": "Crime, Drama",
-    "synopsis": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
-    "thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+    "actors": ["Cillian Murphy", "	Emily Blunt", "Robert Downey Jr."],
+    "genre": "History, Drama",
+    "synopsis": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+    "thumbnail": "https://catalog.cinema-api.com/cf/images/ncg-images/2e882572be564b8c898eeab54ac1f32e.jpg?version=29769C375920D8DD0018F90B61AC7A5C&q=70&fm=webp&w=480",
     "isTrending": true
   },
   {
