@@ -9,8 +9,8 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import LogoImage from "../images/logoDesktop.png";
-import LogoMobile from "../images/logoMobile.png";
+import LogoDesktop from "../images/logoDesktop.png";
+import logoMobile from "../images/logoMobile.png";
 
 function ResponsiveAppBar() {
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
@@ -66,7 +66,7 @@ function ResponsiveAppBar() {
               marginRight: "30rem",
             }}
           >
-            <Image src={LogoImage} height={50} width={130} alt="Logo" />
+            <Image src={LogoDesktop} height={50} width={130} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -101,7 +101,7 @@ function ResponsiveAppBar() {
                   padding: "10px",
                 }}
               >
-                <Image src={LogoMobile} height={50} width={50} alt="Logo" />
+                <Image src={logoMobile} height={50} width={50} alt="Logo2" />
               </Typography>
             </Box>
             <Menu
