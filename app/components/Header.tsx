@@ -10,7 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LogoDesktop from "../images/logoDesktop.png";
-import logoMobile from "../images/logoMobile.png";
 
 function ResponsiveAppBar() {
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
@@ -39,9 +38,11 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
+      position="static"
       component="header"
       sx={{
         backgroundColor: "#000",
+        boxShadow: "none",
         color: "white",
       }}
     >
@@ -59,10 +60,11 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               display: { xs: "none", md: "inline-block" },
-              marginRight: "28rem",
+              overflow: "hidden",
+              marginRight: "30rem",
             }}
           >
-            <Image src={LogoDesktop} height={50} width={130} alt="Logo" />
+            <Image src={LogoDesktop} height={40} width={130} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -97,7 +99,7 @@ function ResponsiveAppBar() {
                   padding: "10px",
                 }}
               >
-                <Image src={logoMobile} height={50} width={50} alt="Logo2" />
+                <Image src={LogoDesktop} height={20} width={70} alt="Logo2" />
               </Typography>
             </Box>
             <Menu
