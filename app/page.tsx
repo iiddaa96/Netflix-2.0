@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -45,7 +46,7 @@ function MovieList() {
   };
 
   return (
-    <div style={{ backgroundColor: "black" }}>
+    <Box style={{ backgroundColor: "black" }}>
       {/* Trailer Box */}
       <div
         className="trailer-box"
@@ -83,7 +84,7 @@ function MovieList() {
           </div>
         ))}
       </Slider>
-    </div>
+    </Box>
   );
 }
 
