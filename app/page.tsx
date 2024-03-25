@@ -1,12 +1,16 @@
 "use client";
-import Slider from "react-slick";
+import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-
 import movies from "./Data/movies";
 
+interface Movie {
+  title: string;
+  thumbnail: string;
+}
+
 function MovieList() {
-  const settings = {
+  const settings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -69,11 +73,12 @@ function MovieList() {
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
       <Slider {...settings}>
-        {movies.map((movie, index) => (
+        {movies.map((movie: Movie, index: number) => (
           <div key={index}>
             <img
               src={movie.thumbnail}
               style={{ maxWidth: "275px", paddingLeft: "20px" }}
+              alt={movie.title}
             />
           </div>
         ))}
