@@ -39,11 +39,9 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-      position="static"
       component="header"
       sx={{
         backgroundColor: "#000",
-        boxShadow: "none",
         color: "white",
       }}
     >
@@ -61,8 +59,7 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               display: { xs: "none", md: "inline-block" },
-              overflow: "hidden",
-              marginRight: "30rem",
+              marginRight: "28rem",
             }}
           >
             <Image src={LogoDesktop} height={50} width={130} alt="Logo" />
