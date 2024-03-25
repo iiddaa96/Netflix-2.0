@@ -1,40 +1,3 @@
-// "use client";
-
-// import { Box } from "@mui/material";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick-theme.css";
-// import "slick-carousel/slick/slick.css";
-// import movies from "./Data/movies";
-
-// const MovieCarousel = () => {
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 5,
-//     slidesToScroll: 2,
-//   };
-
-//   return (
-//     // Karusell för alla filmer
-
-//     <Box>
-//       <Slider {...settings}>
-//         {movies.map((movie, index) => (
-//           <div key={index}>
-//             <img
-//               src={movie.thumbnail}
-//               style={{ maxWidth: "100%", height: "auto" }}
-//             />
-//           </div>
-//         ))}
-//       </Slider>
-//     </Box>
-//   );
-// };
-
-// export default MovieCarousel;
-
 "use client";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -78,7 +41,7 @@ function MovieList() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "black" }}>
       {/* Trailer Box */}
       <div className="trailer-box">
         <iframe
@@ -91,10 +54,14 @@ function MovieList() {
       </div>
 
       {/* Movie Carousel */}
+      <div>
+        <h2 style={{ color: "white" }}>All movies</h2>
+      </div>
+
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
-            <img src={movie.thumbnail} style={{ maxWidth: "200px" }} />
+            <img src={movie.thumbnail} style={{ maxWidth: "250px" }} />
           </div>
         ))}
       </Slider>
