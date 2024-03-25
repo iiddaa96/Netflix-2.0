@@ -43,7 +43,6 @@ function ResponsiveAppBar() {
       component="header"
       sx={{
         backgroundColor: "#000",
-        borderBottom: "1px solid black",
         boxShadow: "none",
         color: "white",
       }}
