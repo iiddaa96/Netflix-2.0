@@ -13,7 +13,6 @@ const Footer: React.FC = () => {
         color: "#fff",
         paddingTop: "2rem",
         paddingBottom: "2rem",
-        position: "fixed",
         left: 0,
         bottom: 0,
         width: "100vw",
