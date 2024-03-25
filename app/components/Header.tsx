@@ -42,16 +42,20 @@ function ResponsiveAppBar() {
       position="static"
       component="header"
       sx={{
-        backgroundColor: "#ffffff",
+        backgroundColor: "#000",
         borderBottom: "1px solid black",
         boxShadow: "none",
-        color: "black",
+        color: "white",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
-          sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
+          sx={{
+            paddingY: "8px",
+            marginTop: "1rem",
+            paddingX: { xs: "10px", sm: "20px" },
+          }}
         >
           <Box
             component={Link}
@@ -59,8 +63,6 @@ function ResponsiveAppBar() {
             sx={{
               display: { xs: "none", md: "inline-block" },
               overflow: "hidden",
-              // width: 70,
-              // height: 70,
               marginRight: "30rem",
             }}
           >
@@ -135,7 +137,7 @@ function ResponsiveAppBar() {
           {/* Tillfälliga länkar till andra sidor desktop */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button component={Link} href="/" color="inherit">
-              Favoriter
+              Favorites
             </Button>
             <Button component={Link} href="/" color="inherit">
               Trending
