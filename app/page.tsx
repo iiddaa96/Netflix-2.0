@@ -1,17 +1,21 @@
 "use client";
-import { Box } from "@mui/material";
-import Slider, { Settings } from "react-slick";
+import { Favorite } from "@mui/icons-material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardMedia,
+  IconButton,
+} from "@mui/material";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
 
-interface Movie {
-  title: string;
-  thumbnail: string;
-}
-
 function MovieList() {
-  const settings: Settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -46,7 +50,7 @@ function MovieList() {
   };
 
   return (
-    <Box style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black" }}>
       {/* Trailer Box */}
       <div
         className="trailer-box"
@@ -63,7 +67,7 @@ function MovieList() {
             display: "flex",
             alignContent: "center",
           }}
-          src="https://www.youtube.com/embed/U2Qp5pL3ovA"
+          // src="https://www.youtube.com/embed/U2Qp5pL3ovA"
           title="Dune Part Two Trailer"
           allowFullScreen
         ></iframe>
@@ -74,18 +78,127 @@ function MovieList() {
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
       <Slider {...settings}>
-        {movies.map((movie: Movie, index: number) => (
+        {movies.map((movie, index) => (
           <div key={index}>
-            <img
-              src={movie.thumbnail}
-              style={{ maxWidth: "275px", paddingLeft: "20px" }}
-              alt={movie.title}
-            />
+            <Card sx={{ width: 297 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="460"
+                  image={movie.thumbnail}
+                  alt={movie.title}
+                />
+              </CardActionArea>
+              <Box>
+                <CardActions sx={{ backgroundColor: "black" }}>
+                  <IconButton
+                    sx={{ backgroundColor: "black" }}
+                    color="error"
+                    aria-label="add to favorites"
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                </CardActions>
+              </Box>
+            </Card>
           </div>
         ))}
       </Slider>
-    </Box>
+      <Favorite />
+    </div>
   );
 }
 
 export default MovieList;
+
+// "use client";
+// import { Box } from "@mui/material";
+// import Slider, { Settings } from "react-slick";
+// import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import movies from "./Data/movies";
+
+// interface Movie {
+//   title: string;
+//   thumbnail: string;
+// }
+
+// function MovieList() {
+//   const settings: Settings = {
+//     dots: true,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 5,
+//     slidesToScroll: 1,
+//     responsive: [
+//       {
+//         breakpoint: 1024,
+//         settings: {
+//           slidesToShow: 3,
+//           slidesToScroll: 3,
+//           infinite: true,
+//           dots: true,
+//         },
+//       },
+//       {
+//         breakpoint: 600,
+//         settings: {
+//           slidesToShow: 2,
+//           slidesToScroll: 2,
+//           initialSlide: 2,
+//         },
+//       },
+//       {
+//         breakpoint: 480,
+//         settings: {
+//           slidesToShow: 1,
+//           slidesToScroll: 1,
+//         },
+//       },
+//     ],
+//   };
+
+//   return (
+//     <Box style={{ backgroundColor: "black" }}>
+//       {/* Trailer Box */}
+//       <div
+//         className="trailer-box"
+//         style={{
+//           display: "flex",
+//           justifyContent: "center",
+//           alignItems: "center",
+//         }}
+//       >
+//         <iframe
+//           style={{
+//             width: "100%",
+//             height: "30rem",
+//             display: "flex",
+//             alignContent: "center",
+//           }}
+//           src="https://www.youtube.com/embed/U2Qp5pL3ovA"
+//           title="Dune Part Two Trailer"
+//           allowFullScreen
+//         ></iframe>
+//       </div>
+
+//       {/* Movie Carousel */}
+//       <div>
+//         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
+//       </div>
+//       <Slider {...settings}>
+//         {movies.map((movie: Movie, index: number) => (
+//           <div key={index}>
+//             <img
+//               src={movie.thumbnail}
+//               style={{ maxWidth: "275px", paddingLeft: "20px" }}
+//               alt={movie.title}
+//             />
+//           </div>
+//         ))}
+//       </Slider>
+//     </Box>
+//   );
+// }
+
+// export default MovieList;
