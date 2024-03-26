@@ -1,6 +1,8 @@
 "use client";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { Button, Menu } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -11,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import { alpha, styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import LogoDesktop from "../images/logoDesktop.png";
 
 const Search = styled("div")(({ theme }) => ({
@@ -53,6 +56,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function ResponsiveAppBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
   return (
     <AppBar position="static" component="header">
       <Container maxWidth="xl">
@@ -74,6 +88,7 @@ function ResponsiveAppBar() {
               aria-label="menu"
               sx={{ marginRight: 2 }}
               color="inherit"
+              onClick={handleOpenNavMenu}
             >
               <MenuIcon />
             </IconButton>
@@ -101,50 +116,47 @@ function ResponsiveAppBar() {
               </Typography>
             </Box>
           </Box>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            <Button component={Link} href="/Favorite" color="inherit">
+              Favoriter
+            </Button>
+            <Button component={Link} href="/" color="inherit">
+              Trending
+            </Button>
+            <Button component={Link} href="/" color="inherit">
+              Contact
+            </Button>
+          </Menu>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-around",
-                width: "100%",
-              }}
-            >
-              <Link href="/" passHref>
-                <Typography
-                  variant="button"
-                  component="a"
-                  sx={{
-                    color: "white",
-                    textDecoration: "none",
-                    marginRight: "1rem",
-                  }}
-                >
-                  Home
-                </Typography>
-              </Link>
-              <Link href="/favorite" passHref>
-                <Typography
-                  variant="button"
-                  component="a"
-                  sx={{
-                    color: "white",
-                    textDecoration: "none",
-                    marginRight: "1rem",
-                  }}
-                >
-                  Favorites
-                </Typography>
-              </Link>
-              <Link href="/contact" passHref>
-                <Typography
-                  variant="button"
-                  component="a"
-                  sx={{ color: "white", textDecoration: "none" }}
-                >
-                  Contact
-                </Typography>
-              </Link>
-            </Box>
+            <Button component={Link} href="/Favorite" color="inherit">
+              Favorites
+            </Button>
+            <Button component={Link} href="/" color="inherit">
+              Trending
+            </Button>
+            <Button component={Link} href="/" color="inherit">
+              Contact
+            </Button>
+            <Button component={Link} href="/" color="inherit">
+              Home
+            </Button>
           </Box>
           <Search>
             <SearchIconWrapper>
