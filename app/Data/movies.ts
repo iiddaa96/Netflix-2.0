@@ -3,7 +3,7 @@ const movies = [
     id: 1,
     title: "Dune part 2",
     year: 2024,
-    rating: "R",
+    rating: "18+",
     actors: ["Timothée Chalamet", "	Zendaya", "Rebecca Ferguson"],
     genre: "Action",
     synopsis:
@@ -15,7 +15,7 @@ const movies = [
     id: 2,
     title: "Kung Fu Panda 4",
     year: 2024,
-    rating: "R",
+    rating: "",
     actors: ["Jack Black", "Glenn Berger", "Darren Lembke"],
     genre: "Adventure, Drama",
     synopsis:
@@ -27,7 +27,7 @@ const movies = [
     id: 3,
     title: "Oppenheimer",
     year: 2023,
-    rating: "R",
+    rating: "16+",
     actors: ["Cillian Murphy", "	Emily Blunt", "Robert Downey Jr."],
     genre: "History, Drama",
     synopsis:
@@ -40,7 +40,7 @@ const movies = [
     id: 4,
     title: "The Dark Knight",
     year: 2008,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
     genre: "Action, Crime, Drama",
     synopsis:
@@ -52,7 +52,7 @@ const movies = [
     id: 5,
     title: "12 Angry Men",
     year: 1957,
-    rating: "Not Rated",
+    rating: "",
     actors: ["Henry Fonda", "Lee J. Cobb", "Martin Balsam"],
     genre: "Crime, Drama",
     synopsis:
@@ -64,7 +64,7 @@ const movies = [
     id: 6,
     title: "Schindler's List",
     year: 1993,
-    rating: "R",
+    rating: "18+",
     actors: ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
     genre: "Biography, Drama, History",
     synopsis:
@@ -76,7 +76,7 @@ const movies = [
     id: 7,
     title: "The Lord of the Rings: The Return of the King",
     year: 2003,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Elijah Wood", "Viggo Mortensen", "Ian McKellen"],
     genre: "Action, Adventure, Drama",
     synopsis:
@@ -89,7 +89,7 @@ const movies = [
     id: 8,
     title: "Pulp Fiction",
     year: 1994,
-    rating: "R",
+    rating: "16+",
     actors: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
     genre: "Crime, Drama",
     synopsis:
@@ -101,7 +101,7 @@ const movies = [
     id: 9,
     title: "The Good, the Bad and the Ugly",
     year: 1966,
-    rating: "Not Rated",
+    rating: "16+",
     actors: ["Clint Eastwood", "Lee Van Cleef", "Eli Wallach"],
     genre: "Western",
     synopsis:
@@ -113,7 +113,7 @@ const movies = [
     id: 10,
     title: "Fight Club",
     year: 1999,
-    rating: "R",
+    rating: "18+",
     actors: ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
     genre: "Drama",
     synopsis:
@@ -126,7 +126,7 @@ const movies = [
     id: 11,
     title: "Forrest Gump",
     year: 1994,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Tom Hanks", "Robin Wright", "Gary Sinise"],
     genre: "Drama, Romance",
     synopsis:
@@ -138,7 +138,7 @@ const movies = [
     id: 12,
     title: "Inception",
     year: 2010,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
     genre: "Action, Adventure, Sci-Fi",
     synopsis:
@@ -150,7 +150,7 @@ const movies = [
     id: 13,
     title: "The Lord of the Rings: The Fellowship of the Ring",
     year: 2001,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Elijah Wood", "Ian McKellen", "Orlando Bloom"],
     genre: "Action, Adventure, Drama",
     synopsis:
@@ -162,7 +162,7 @@ const movies = [
     id: 14,
     title: "Star Wars: Episode V - The Empire Strikes Back",
     year: 1980,
-    rating: "PG",
+    rating: "16+",
     actors: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
     genre: "Action, Adventure, Fantasy",
     synopsis:
@@ -175,7 +175,7 @@ const movies = [
     id: 15,
     title: "The Matrix",
     year: 1999,
-    rating: "R",
+    rating: "18+",
     actors: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
     genre: "Action, Sci-Fi",
     synopsis:
@@ -187,7 +187,7 @@ const movies = [
     id: 16,
     title: "Goodfellas",
     year: 1990,
-    rating: "R",
+    rating: "",
     actors: ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
     genre: "Biography, Crime, Drama",
     synopsis:
@@ -199,7 +199,7 @@ const movies = [
     id: 17,
     title: "One Flew Over the Cuckoo's Nest",
     year: 1975,
-    rating: "R",
+    rating: "",
     actors: ["Jack Nicholson", "Louise Fletcher", "Michael Berryman"],
     genre: "Drama",
     synopsis:
@@ -211,7 +211,7 @@ const movies = [
     id: 18,
     title: "Seven Samurai",
     year: 1954,
-    rating: "Not Rated",
+    rating: "16+",
     actors: ["Toshiro Mifune", "Takashi Shimura", "Keiko Tsushima"],
     genre: "Action, Adventure, Drama",
     synopsis:
@@ -223,7 +223,7 @@ const movies = [
     id: 19,
     title: "The Silence of the Lambs",
     year: 1991,
-    rating: "R",
+    rating: "18+",
     actors: ["Jodie Foster", "Anthony Hopkins", "Lawrence A. Bonney"],
     genre: "Crime, Drama, Thriller",
     synopsis:
@@ -235,7 +235,7 @@ const movies = [
     id: 20,
     title: "Casablanca",
     year: 1942,
-    rating: "PG",
+    rating: "13+",
     actors: ["Humphrey Bogart", "Ingrid Bergman", "Paul Henreid"],
     genre: "Drama, Romance, War",
     synopsis:
@@ -248,7 +248,7 @@ const movies = [
     id: 21,
     title: "The Lord of the Rings: The Two Towers",
     year: 2002,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Elijah Wood", "Ian McKellen", "Viggo Mortensen"],
     genre: "Action, Adventure, Drama",
     synopsis:
@@ -260,7 +260,7 @@ const movies = [
     id: 22,
     title: "Indiana Jones and the Raiders of the Lost Ark",
     year: 1981,
-    rating: "PG",
+    rating: "16+",
     actors: ["Harrison Ford", "Karen Allen", "Paul Freeman"],
     genre: "Action, Adventure",
     synopsis:
@@ -272,7 +272,7 @@ const movies = [
     id: 23,
     title: "City of God",
     year: 2002,
-    rating: "R",
+    rating: "",
     actors: ["Alexandre Rodrigues", "Leandro Firmino", "Matheus Nachtergaele"],
     genre: "Crime, Drama",
     synopsis:
@@ -284,7 +284,7 @@ const movies = [
     id: 24,
     title: "Once Upon a Time in the West",
     year: 1968,
-    rating: "PG-13",
+    rating: "13+",
     actors: ["Henry Fonda", "Charles Bronson", "Claudia Cardinale"],
     genre: "Western",
     synopsis:
@@ -296,7 +296,7 @@ const movies = [
     id: 25,
     title: "The Departed",
     year: 2006,
-    rating: "R",
+    rating: "18+",
     actors: ["Leonardo DiCaprio", "Matt Damon", "Jack Nicholson"],
     genre: "Crime, Drama, Thriller",
     synopsis:
@@ -308,7 +308,7 @@ const movies = [
     id: 26,
     title: "Rear Window",
     year: 1954,
-    rating: "PG",
+    rating: "16+",
     actors: ["James Stewart", "Grace Kelly", "Wendell Corey"],
     genre: "Mystery, Thriller",
     synopsis:
@@ -320,7 +320,7 @@ const movies = [
     id: 27,
     title: "Gladiator",
     year: 2000,
-    rating: "R",
+    rating: "18+",
     actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
     genre: "Action, Adventure, Drama",
     synopsis:
@@ -332,7 +332,7 @@ const movies = [
     id: 28,
     title: "Terminator 2: Judgment Day",
     year: 1991,
-    rating: "R",
+    rating: "16+",
     actors: ["Arnold Schwarzenegger", "Linda Hamilton", "Edward Furlong"],
     genre: "Action, Sci-Fi",
     synopsis:
@@ -345,7 +345,7 @@ const movies = [
     id: 29,
     title: "Whiplash",
     year: 2014,
-    rating: "R",
+    rating: "16+",
     actors: ["Miles Teller", "J.K. Simmons", "Melissa Benoist"],
     genre: "Drama, Music",
     synopsis:
@@ -357,7 +357,7 @@ const movies = [
     id: 30,
     title: "Psycho",
     year: 1960,
-    rating: "R",
+    rating: "18+",
     actors: ["Anthony Perkins", "Janet Leigh", "Vera Miles"],
     genre: "Horror, Mystery, Thriller",
     synopsis:

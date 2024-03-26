@@ -7,6 +7,7 @@ import {
   CardActions,
   CardMedia,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
@@ -47,6 +48,7 @@ function MovieList() {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -120,13 +122,18 @@ function MovieList() {
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <IconButton
-                    sx={{ backgroundColor: "black" }}
                     color={"error"}
                     aria-label="add to favorites"
                     onClick={() => toggleFavorite(movie)}
                   >
                     <FavoriteIcon />
                   </IconButton>
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Year: {movie.year}
+                  </Typography>
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Rating: {movie.rating}
+                  </Typography>
                 </CardActions>
               </Box>
             </Card>
