@@ -68,7 +68,11 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
   return (
-    <AppBar position="static" component="header">
+    <AppBar
+      position="static"
+      component="header"
+      sx={{ backgroundColor: "black" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
