@@ -104,7 +104,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         <img
           src={movie.thumbnail}
           alt="Movie Thumbnail"
-          style={{ width: "90%", height: "90%" }}
+          style={{ width: "auto", height: "auto" }}
         />
         <h2>{movie.title}</h2>
         <p>
