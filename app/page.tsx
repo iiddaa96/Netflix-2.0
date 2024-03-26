@@ -352,7 +352,7 @@ const NextArrow = (props: any) => {
         right: 0,
         transform: "translateY(-50%)",
         zIndex: 1,
-        marginRight: "1rem",
+        marginRight: "1.2rem",
       }}
       onClick={onClick}
     >
@@ -375,6 +375,7 @@ const PrevArrow = (props: any) => {
         left: 0,
         transform: "translateY(-50%)",
         zIndex: 1,
+        marginLeft: "1rem",
       }}
       onClick={onClick}
     >

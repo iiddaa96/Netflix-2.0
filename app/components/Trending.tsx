@@ -1,4 +1,3 @@
-"use client";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -7,12 +6,9 @@ import {
   CardActions,
   CardMedia,
   IconButton,
-  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 import movies from "../Data/movies";
 import FilmView, { Movie } from "../components/Film-view";
 
@@ -76,6 +72,46 @@ function Trending() {
     ],
   };
 
+  const NextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <IconButton
+        className={className}
+        style={{
+          ...style,
+          color: "white",
+          position: "absolute",
+          top: "50%",
+          right: 0,
+          transform: "translateY(-50%)",
+          zIndex: 1,
+          marginRight: "1.2rem",
+        }}
+        onClick={onClick}
+      ></IconButton>
+    );
+  };
+
+  const PrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <IconButton
+        className={className}
+        style={{
+          ...style,
+          color: "white",
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          transform: "translateY(-50%)",
+          zIndex: 1,
+          marginLeft: "1rem",
+        }}
+        onClick={onClick}
+      ></IconButton>
+    );
+  };
+
   return (
     <div style={{ backgroundColor: "black" }}>
       {/* Movie Carousel */}
@@ -83,44 +119,33 @@ function Trending() {
         <h2 style={{ color: "white", paddingLeft: "20px" }}>Trending</h2>
       </div>
       {/* Carousel for movies */}
-      <Slider {...settings}>
-        {movies.slice(0, 10).map(
-          (
-            movie,
-            index // Använd slice för att bara ta de första 10 filmerna
-          ) => (
-            <div key={index}>
-              <Card sx={{ width: 297 }}>
-                <CardActionArea onClick={() => handleMovieClick(movie)}>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={movie.thumbnail}
-                    alt={movie.title}
-                  />
-                </CardActionArea>
-                {/* Button for favorites */}
-                <Box>
-                  <CardActions sx={{ backgroundColor: "black" }}>
-                    <IconButton
-                      color={"error"}
-                      aria-label="add to favorites"
-                      onClick={() => toggleFavorite(movie)}
-                    >
-                      <FavoriteIcon />
-                    </IconButton>
-                    <Typography variant="subtitle2" sx={{ color: "white" }}>
-                      Year: {movie.year}
-                    </Typography>
-                    <Typography variant="subtitle2" sx={{ color: "white" }}>
-                      Rating: {movie.rating}
-                    </Typography>
-                  </CardActions>
-                </Box>
-              </Card>
-            </div>
-          )
-        )}
+      <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
+        {movies.slice(0, 10).map((movie, index) => (
+          <div key={index}>
+            <Card sx={{ width: 297 }}>
+              <CardActionArea onClick={() => handleMovieClick(movie)}>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={movie.thumbnail}
+                  alt={movie.title}
+                />
+              </CardActionArea>
+              {/* Button for favorites */}
+              <Box>
+                <CardActions sx={{ backgroundColor: "black" }}>
+                  <IconButton
+                    sx={{ backgroundColor: "black" }}
+                    color={"error"}
+                    aria-label="add to favorites"
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                </CardActions>
+              </Box>
+            </Card>
+          </div>
+        ))}
       </Slider>
       {selectedMovie && (
         <div
