@@ -1,5 +1,4 @@
 "use client";
-
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -89,8 +88,10 @@ function MovieList() {
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
-            <Card sx={{ width: 297 }} onClick={() => handleMovieClick(movie)}>
-              <CardActionArea>
+            <Card sx={{ width: 297 }}>
+              {" "}
+              {/* Updated here */}
+              <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
                   height="460"
