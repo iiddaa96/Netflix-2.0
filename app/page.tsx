@@ -13,6 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
+import MyFavorites from "./Favorite/page";
 
 function MovieList() {
   const settings = {
@@ -106,6 +107,7 @@ function MovieList() {
           </div>
         ))}
       </Slider>
+      <MyFavorites />
       <Favorite />
     </div>
   );
