@@ -128,9 +128,11 @@ function MovieList() {
                   >
                     <FavoriteIcon />
                   </IconButton>
-                  <Typography sx={{ color: "white" }}>{movie.year}</Typography>
-                  <Typography sx={{ color: "white" }}>
-                    {movie.rating}
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Year: {movie.year}
+                  </Typography>
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Rating: {movie.rating}
                   </Typography>
                 </CardActions>
               </Box>
