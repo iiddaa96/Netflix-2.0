@@ -94,7 +94,7 @@ function MovieList() {
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
-                  height="460"
+                  height="300"
                   image={movie.thumbnail}
                   alt={movie.title}
                 />

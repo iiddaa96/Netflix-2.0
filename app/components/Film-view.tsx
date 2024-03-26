@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface FilmViewProps {
   movie: Movie;
@@ -9,11 +8,17 @@ interface FilmViewProps {
 
 export interface Movie {
   thumbnail: string;
+  title: string;
+  actors: string[];
+  genre: string;
+  synopsis: string;
 }
 
 const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
+  const filmViewRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Add event listener to handle clicks outside of the pop-up
+    // om man klickar utanför bilden försvinner film-view
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (target.closest(".film-view-content") === null) {
@@ -26,6 +31,32 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
+
+  useEffect(() => {
+    if (filmViewRef.current) {
+      const { width: thumbnailWidth, height: thumbnailHeight } =
+        filmViewRef.current.getBoundingClientRect();
+      const aspectRatio = thumbnailWidth / thumbnailHeight;
+      const maxWidth = window.innerWidth * 0.8; // 80% of the window width
+      const maxHeight = window.innerHeight * 0.8; // 80% of the window height
+
+      let newWidth = thumbnailWidth;
+      let newHeight = thumbnailHeight;
+
+      // Adjust width and height while maintaining aspect ratio
+      if (newWidth > maxWidth) {
+        newWidth = maxWidth;
+        newHeight = newWidth / aspectRatio;
+      }
+      if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = newHeight * aspectRatio;
+      }
+
+      filmViewRef.current.style.width = `${newWidth}px`;
+      filmViewRef.current.style.height = `${newHeight}px`;
+    }
+  }, [movie.thumbnail]);
 
   return (
     <div
@@ -44,14 +75,13 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       }}
     >
       <div
+        ref={filmViewRef}
         className="film-view-content"
         style={{
           backgroundColor: "#fff",
           padding: "20px",
           borderRadius: "8px",
-          maxWidth: "80%",
-          maxHeight: "80%",
-          overflow: "auto",
+          overflow: "hidden",
         }}
       >
         <button
@@ -73,9 +103,18 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         <img
           src={movie.thumbnail}
           alt="Movie Thumbnail"
-          style={{ maxWidth: "100%", maxHeight: "100%" }}
+          style={{ width: "90%", height: "90%" }}
         />
-        {/* Additional movie information such as title and description can be added here */}
+        <h2>{movie.title}</h2>
+        <p>
+          <strong>Actors:</strong> {movie.actors.join(", ")}
+        </p>
+        <p>
+          <strong>Genre:</strong> {movie.genre}
+        </p>
+        <p>
+          <strong>Synopsis:</strong> {movie.synopsis}
+        </p>
       </div>
     </div>
   );
