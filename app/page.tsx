@@ -1,5 +1,5 @@
 "use client";
-import { Favorite } from "@mui/icons-material";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -9,12 +9,20 @@ import {
   CardMedia,
   IconButton,
 } from "@mui/material";
+import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
+import FilmView, { Movie } from "./components/Film-view";
 
 function MovieList() {
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
+  const handleMovieClick = (movie: Movie) => {
+    setSelectedMovie(movie);
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -81,7 +89,7 @@ function MovieList() {
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
-            <Card sx={{ width: 297 }}>
+            <Card sx={{ width: 297 }} onClick={() => handleMovieClick(movie)}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -106,7 +114,27 @@ function MovieList() {
           </div>
         ))}
       </Slider>
-      <Favorite />
+      {selectedMovie && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 9999,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <FilmView
+            movie={selectedMovie}
+            onClose={() => setSelectedMovie(null)}
+          />
+        </div>
+      )}
     </div>
   );
 }
