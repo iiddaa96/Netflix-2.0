@@ -12,10 +12,9 @@ import {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import movies from "./Data/movies";
-import MyFavorites from "./Favorite/page";
+import movies from "../Data/movies";
 
-function MovieList() {
+function MyFavorites() {
   const settings = {
     dots: true,
     infinite: true,
@@ -52,31 +51,9 @@ function MovieList() {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      {/* Trailer */}
-      <div
-        className="trailer-box"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <iframe
-          style={{
-            width: "100%",
-            height: "30rem",
-            display: "flex",
-            alignContent: "center",
-          }}
-          src="https://www.youtube.com/embed/U2Qp5pL3ovA" //Får byta till bild eller filma in trailer o lägga till själva
-          title="Dune Part Two Trailer"
-          allowFullScreen
-        ></iframe>
-      </div>
-
       {/* Movie Carousel */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>Favorite</h2>
       </div>
       {/* Karusell för filmerna */}
       <Slider {...settings}>
@@ -107,10 +84,9 @@ function MovieList() {
           </div>
         ))}
       </Slider>
-      <MyFavorites />
       <Favorite />
     </div>
   );
 }
 
-export default MovieList;
+export default MyFavorites;
