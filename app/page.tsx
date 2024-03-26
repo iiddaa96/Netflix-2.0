@@ -13,14 +13,32 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
-import MyFavorites from "./Favorite/page";
 import FilmView, { Movie } from "./components/Film-view";
 
 function MovieList() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
 
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie);
+  };
+
+  const toggleFavorite = (movie: Movie) => {
+    const isFavorite = favoriteMovies.some(
+      (favMovie) => favMovie.id === movie.id
+    );
+    if (isFavorite) {
+      const updatedFavorites = favoriteMovies.filter(
+        (favMovie) => favMovie.id !== movie.id
+      );
+      setFavoriteMovies(updatedFavorites);
+    } else {
+      setFavoriteMovies([...favoriteMovies, movie]);
+    }
+  };
+
+  const isFavorite = (movie: Movie) => {
+    return favoriteMovies.some((favMovie) => favMovie.id === movie.id);
   };
 
   const settings = {
@@ -75,7 +93,7 @@ function MovieList() {
             display: "flex",
             alignContent: "center",
           }}
-          src="https://www.youtube.com/embed/U2Qp5pL3ovA" //Får byta till bild eller filma in trailer o lägga till själva
+          src="https://www.youtube.com/embed/U2Qp5pL3ovA"
           title="Dune Part Two Trailer"
           allowFullScreen
         ></iframe>
@@ -85,13 +103,11 @@ function MovieList() {
       <div>
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
-      {/* Karusell för filmerna */}
+      {/* Carousel for movies */}
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
             <Card sx={{ width: 297 }}>
-              {" "}
-              {/* Updated here */}
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
@@ -100,13 +116,14 @@ function MovieList() {
                   alt={movie.title}
                 />
               </CardActionArea>
-              {/* Knapp för favoriter */}
+              {/* Button for favorites */}
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <IconButton
                     sx={{ backgroundColor: "black" }}
-                    color="error"
+                    color={"error"}
                     aria-label="add to favorites"
+                    onClick={() => toggleFavorite(movie)}
                   >
                     <FavoriteIcon />
                   </IconButton>
@@ -137,7 +154,6 @@ function MovieList() {
           />
         </div>
       )}
-      <MyFavorites />
     </div>
   );
 }

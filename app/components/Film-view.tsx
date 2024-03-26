@@ -7,6 +7,7 @@ interface FilmViewProps {
 }
 
 export interface Movie {
+  id: any;
   thumbnail: string;
   title: string;
   actors: string[];
