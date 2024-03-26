@@ -6,6 +6,7 @@ import {
   CardActions,
   CardMedia,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
@@ -141,6 +142,12 @@ function Trending() {
                   >
                     <FavoriteIcon />
                   </IconButton>
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Year: {movie.year}
+                  </Typography>
+                  <Typography variant="subtitle2" sx={{ color: "white" }}>
+                    Rating: {movie.rating}
+                  </Typography>
                 </CardActions>
               </Box>
             </Card>
