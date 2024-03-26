@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
 import FilmView, { Movie } from "./components/Film-view";
+import Trending from "./components/Trending";
 
 function MovieList() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
@@ -100,7 +101,7 @@ function MovieList() {
           allowFullScreen
         ></iframe>
       </div>
-
+      <Trending />
       {/* Movie Carousel */}
       <div>
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
