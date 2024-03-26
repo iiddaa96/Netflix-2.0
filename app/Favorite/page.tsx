@@ -53,7 +53,7 @@ function MyFavorites() {
     <div style={{ backgroundColor: "black" }}>
       {/* Movie Carousel */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>Favorite</h2>
       </div>
       {/* Karusell för filmerna */}
       <Slider {...settings}>

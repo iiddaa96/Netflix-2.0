@@ -120,7 +120,7 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <Button component={Link} href="/" color="inherit">
+              <Button component={Link} href="/Favorite" color="inherit">
                 Favoriter
               </Button>
               <Button component={Link} href="/" color="inherit">
@@ -134,7 +134,7 @@ function ResponsiveAppBar() {
 
           {/* Tillfälliga länkar till andra sidor desktop */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button component={Link} href="/" color="inherit">
+            <Button component={Link} href="/Favorite" color="inherit">
               Favorites
             </Button>
             <Button component={Link} href="/" color="inherit">
