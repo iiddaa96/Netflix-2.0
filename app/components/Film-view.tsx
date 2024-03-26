@@ -81,7 +81,8 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           backgroundColor: "#fff",
           padding: "20px",
           borderRadius: "8px",
-          overflow: "hidden",
+          overflowY: "auto", // Enable vertical scrolling
+          maxHeight: "80vh", // Set max height for scrolling
         }}
       >
         <button
@@ -107,13 +108,13 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         />
         <h2>{movie.title}</h2>
         <p>
-          <strong>Actors:</strong> {movie.actors.join(", ")}
-        </p>
-        <p>
           <strong>Genre:</strong> {movie.genre}
         </p>
         <p>
           <strong>Synopsis:</strong> {movie.synopsis}
+        </p>
+        <p>
+          <strong>Actors:</strong> {movie.actors.join(", ")}
         </p>
       </div>
     </div>
