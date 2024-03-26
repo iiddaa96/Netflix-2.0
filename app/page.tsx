@@ -13,8 +13,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
-import FilmView, { Movie } from "./components/Film-view";
 import MyFavorites from "./Favorite/page";
+import FilmView, { Movie } from "./components/Film-view";
 
 function MovieList() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);

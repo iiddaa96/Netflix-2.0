@@ -1,5 +1,4 @@
 "use client";
-import { Favorite } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -9,12 +8,20 @@ import {
   CardMedia,
   IconButton,
 } from "@mui/material";
+import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "../Data/movies";
+import FilmView, { Movie } from "../components/Film-view";
 
-function MyFavorites() {
+function AllFavourites() {
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
+  const handleMovieClick = (movie: Movie) => {
+    setSelectedMovie(movie);
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -53,17 +60,19 @@ function MyFavorites() {
     <div style={{ backgroundColor: "black" }}>
       {/* Movie Carousel */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>Favorite</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
       {/* Karusell för filmerna */}
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index}>
             <Card sx={{ width: 297 }}>
-              <CardActionArea>
+              {" "}
+              {/* Updated here */}
+              <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
-                  height="460"
+                  height="300"
                   image={movie.thumbnail}
                   alt={movie.title}
                 />
@@ -84,9 +93,29 @@ function MyFavorites() {
           </div>
         ))}
       </Slider>
-      <Favorite />
+      {selectedMovie && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 9999,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <FilmView
+            movie={selectedMovie}
+            onClose={() => setSelectedMovie(null)}
+          />
+        </div>
+      )}
     </div>
   );
 }
 
-export default MyFavorites;
+export default AllFavourites;
