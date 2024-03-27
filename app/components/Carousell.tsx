@@ -13,11 +13,15 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import movies from "../Data/movies";
 import FilmView, { Movie } from "../components/Film-view";
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
-function Carousell() {
+interface ICarousell {
+  title: string;
+  movies: Movie[];
+}
+
+function Carousell({ title, movies }: ICarousell) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const { toggleFavorite } = useFavoriteMovies();
@@ -64,54 +68,13 @@ function Carousell() {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      {/* Karusell för trending */}
+      {/* Karusell */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>Trending</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>{title}</h2>
       </div>
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
-        {movies
-          .filter((movie) => movie.id >= 20 && movie.id <= 28)
-          .map((movie) => (
-            <div key={movie.id}>
-              <Card sx={{ width: 297 }}>
-                <CardActionArea onClick={() => handleMovieClick(movie)}>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={movie.thumbnail}
-                    alt={movie.title}
-                  />
-                </CardActionArea>
-                {/* Button for favorites */}
-                <Box>
-                  <CardActions sx={{ backgroundColor: "black" }}>
-                    <IconButton
-                      sx={{ backgroundColor: "black" }}
-                      color={"error"}
-                      aria-label="add to favorites"
-                    >
-                      <FavoriteIcon />
-                    </IconButton>
-                    <Typography variant="subtitle2" sx={{ color: "white" }}>
-                      Year: {movie.year}
-                    </Typography>
-                    <Typography variant="subtitle2" sx={{ color: "white" }}>
-                      Rating: {movie.rating}
-                    </Typography>
-                  </CardActions>
-                </Box>
-              </Card>
-            </div>
-          ))}
-      </Slider>
-      ;{/* Movie Carousel */}
-      <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
-      </div>
-      {/* Carousel for movies */}
-      <Slider {...settings}>
-        {movies.map((movie, index) => (
-          <div key={index}>
+        {movies.map((movie) => (
+          <div key={movie.id}>
             <Card sx={{ width: 297 }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
@@ -125,9 +88,9 @@ function Carousell() {
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <IconButton
+                    sx={{ backgroundColor: "black" }}
                     color={"error"}
                     aria-label="add to favorites"
-                    onClick={() => toggleFavorite(movie)}
                   >
                     <FavoriteIcon />
                   </IconButton>
@@ -143,6 +106,7 @@ function Carousell() {
           </div>
         ))}
       </Slider>
+      {/* Popup fönster när man klickar på utvald film */}
       {selectedMovie && (
         <div
           style={{
@@ -167,7 +131,7 @@ function Carousell() {
     </div>
   );
 }
-
+// Pil för att svipe till höger
 const NextArrow = (props: any) => {
   const { className, style, onClick } = props;
   return (
@@ -188,7 +152,7 @@ const NextArrow = (props: any) => {
     ></IconButton>
   );
 };
-
+// Pil för att svipe till vänster
 const PrevArrow = (props: any) => {
   const { className, style, onClick } = props;
   return (

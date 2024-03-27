@@ -13,6 +13,8 @@ export interface Movie {
   actors: string[];
   genre: string;
   synopsis: string;
+  year: number;
+  rating: string;
 }
 
 const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {

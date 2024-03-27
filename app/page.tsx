@@ -1,5 +1,6 @@
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import movies from "./Data/movies";
 import Carousell from "./components/Carousell";
 
 function MovieList() {
@@ -26,8 +27,16 @@ function MovieList() {
           allowFullScreen
         ></iframe>
       </div>
-      {/* -------Karusell här------ */}
-      <Carousell />
+      {/* -------Karuseller här------ */}
+      <Carousell
+        title="Trending"
+        movies={movies.filter((movie) => movie.id >= 20 && movie.id <= 28)}
+      />
+      <Carousell title="All movies" movies={movies} />
+      <Carousell
+        title="Recommended for you"
+        movies={movies.filter((movie) => movie.id >= 13 && movie.id <= 19)}
+      />
     </div>
   );
 }
