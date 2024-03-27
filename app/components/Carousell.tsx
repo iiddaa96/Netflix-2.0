@@ -64,7 +64,47 @@ function Carousell() {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      {/* Movie Carousel */}
+      {/* Karusell för trending */}
+      <div>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>Trending</h2>
+      </div>
+      <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
+        {movies
+          .filter((movie) => movie.id >= 20 && movie.id <= 28)
+          .map((movie) => (
+            <div key={movie.id}>
+              <Card sx={{ width: 297 }}>
+                <CardActionArea onClick={() => handleMovieClick(movie)}>
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={movie.thumbnail}
+                    alt={movie.title}
+                  />
+                </CardActionArea>
+                {/* Button for favorites */}
+                <Box>
+                  <CardActions sx={{ backgroundColor: "black" }}>
+                    <IconButton
+                      sx={{ backgroundColor: "black" }}
+                      color={"error"}
+                      aria-label="add to favorites"
+                    >
+                      <FavoriteIcon />
+                    </IconButton>
+                    <Typography variant="subtitle2" sx={{ color: "white" }}>
+                      Year: {movie.year}
+                    </Typography>
+                    <Typography variant="subtitle2" sx={{ color: "white" }}>
+                      Rating: {movie.rating}
+                    </Typography>
+                  </CardActions>
+                </Box>
+              </Card>
+            </div>
+          ))}
+      </Slider>
+      ;{/* Movie Carousel */}
       <div>
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
