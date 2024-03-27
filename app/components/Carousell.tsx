@@ -68,7 +68,14 @@ function Carousell({ title, movies }: ICarousell) {
     <div style={{ backgroundColor: "black" }}>
       {/* Karusell */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>{title}</h2>
+        <h3
+          style={{
+            color: "white",
+            paddingLeft: "20px",
+          }}
+        >
+          {title}
+        </h3>
       </div>
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
         {movies.map((movie) => (

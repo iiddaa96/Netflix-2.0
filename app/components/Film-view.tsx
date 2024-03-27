@@ -40,13 +40,13 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       const { width: thumbnailWidth, height: thumbnailHeight } =
         filmViewRef.current.getBoundingClientRect();
       const aspectRatio = thumbnailWidth / thumbnailHeight;
-      const maxWidth = window.innerWidth * 0.8; // 80% of the window width
-      const maxHeight = window.innerHeight * 0.8; // 80% of the window height
+      const maxWidth = window.innerWidth * 0.8;
+      const maxHeight = window.innerHeight * 0.8;
 
       let newWidth = thumbnailWidth;
       let newHeight = thumbnailHeight;
 
-      // Adjust width and height while maintaining aspect ratio
+      // Justera bredd och höjd samtidigt som aspect ratio bibehålls
       if (newWidth > maxWidth) {
         newWidth = maxWidth;
         newHeight = newWidth / aspectRatio;
@@ -67,58 +67,46 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
         zIndex: 9999,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
+        height: "100%",
       }}
     >
       <div
         ref={filmViewRef}
         className="film-view-content"
         style={{
-          backgroundColor: "#fff",
+          display: "flex",
+          backgroundColor: "rgba(211, 211, 211, 0.2)",
+          color: "white",
+          textShadow: "1px 1px 2px black",
           padding: "20px",
           borderRadius: "8px",
-          overflowY: "auto", // Enable vertical scrolling
-          maxHeight: "80vh", // Set max height for scrolling
+          overflowY: "auto",
+          maxHeight: "80vh",
+          maxWidth: "80vw",
         }}
       >
-        <button
-          className="close-button"
-          onClick={onClose}
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            padding: "5px",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "20px",
-          }}
-        >
-          Close FilmView
-        </button>
         <img
           src={movie.thumbnail}
           alt="Movie Thumbnail"
-          style={{ width: "auto", height: "auto" }}
+          style={{ width: "35%", marginRight: "20px" }}
         />
-        <h2>{movie.title}</h2>
-        <p>
-          <strong>Genre:</strong> {movie.genre}
-        </p>
-        <p>
-          <strong>Synopsis:</strong> {movie.synopsis}
-        </p>
-        <p>
-          <strong>Actors:</strong> {movie.actors.join(", ")}
-        </p>
+        <section style={{ width: "50%" }}>
+          <h2>{movie.title}</h2>
+          <p>
+            <strong>Genre:</strong> {movie.genre}
+          </p>
+          <p>
+            <strong>Synopsis:</strong> {movie.synopsis}
+          </p>
+          <p>
+            <strong>Actors:</strong> {movie.actors.join(", ")}
+          </p>
+        </section>
       </div>
     </div>
   );
