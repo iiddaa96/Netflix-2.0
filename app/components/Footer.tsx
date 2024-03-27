@@ -1,5 +1,3 @@
-// components/Footer.tsx
-
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -13,9 +11,6 @@ const Footer: React.FC = () => {
         color: "#fff",
         paddingTop: "2rem",
         paddingBottom: "2rem",
-        left: 0,
-        bottom: 0,
-        width: "100vw",
       }}
     >
       <Container>
@@ -31,33 +26,6 @@ const Footer: React.FC = () => {
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Account
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Media Center
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Jobs
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Buy Gift Cards
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Ways to Watch
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Terms of Use
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Privacy
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Cookie Preferences
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Contact Us
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Legal Notices
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Netflix-2.0 Originals

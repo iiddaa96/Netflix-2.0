@@ -1,3 +1,4 @@
+"use client";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -10,33 +11,22 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
-import movies from "../Data/movies";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import FilmView, { Movie } from "../components/Film-view";
+import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
-function Trending() {
+interface ICarousell {
+  title: string;
+  movies: Movie[];
+}
+
+function Carousell({ title, movies }: ICarousell) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
 
+  const { toggleFavorite } = useFavoriteMovies();
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie);
-  };
-
-  const toggleFavorite = (movie: Movie) => {
-    const isFavorite = favoriteMovies.some(
-      (favMovie) => favMovie.id === movie.id
-    );
-    if (isFavorite) {
-      const updatedFavorites = favoriteMovies.filter(
-        (favMovie) => favMovie.id !== movie.id
-      );
-      setFavoriteMovies(updatedFavorites);
-    } else {
-      setFavoriteMovies([...favoriteMovies, movie]);
-    }
-  };
-
-  const isFavorite = (movie: Movie) => {
-    return favoriteMovies.some((favMovie) => favMovie.id === movie.id);
   };
 
   const settings = {
@@ -44,7 +34,8 @@ function Trending() {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -73,56 +64,22 @@ function Trending() {
     ],
   };
 
-  const NextArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <IconButton
-        className={className}
-        style={{
-          ...style,
-          color: "white",
-          position: "absolute",
-          top: "50%",
-          right: 0,
-          transform: "translateY(-50%)",
-          zIndex: 1,
-          marginRight: "1.2rem",
-        }}
-        onClick={onClick}
-      ></IconButton>
-    );
-  };
-
-  const PrevArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <IconButton
-        className={className}
-        style={{
-          ...style,
-          color: "white",
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          transform: "translateY(-50%)",
-          zIndex: 1,
-          marginLeft: "1rem",
-        }}
-        onClick={onClick}
-      ></IconButton>
-    );
-  };
-
   return (
     <div style={{ backgroundColor: "black" }}>
-      {/* Movie Carousel */}
+      {/* Karusell */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>Trending</h2>
+        <h3
+          style={{
+            color: "white",
+            paddingLeft: "20px",
+          }}
+        >
+          {title}
+        </h3>
       </div>
-      {/* Carousel for movies */}
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
-        {movies.slice(0, 10).map((movie, index) => (
-          <div key={index}>
+        {movies.map((movie) => (
+          <div key={movie.id}>
             <Card sx={{ width: 297 }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
@@ -154,6 +111,7 @@ function Trending() {
           </div>
         ))}
       </Slider>
+      {/* Popup fönster när man klickar på utvald film */}
       {selectedMovie && (
         <div
           style={{
@@ -178,5 +136,47 @@ function Trending() {
     </div>
   );
 }
+// Pil för att svipe till höger
+const NextArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <IconButton
+      className={className}
+      style={{
+        ...style,
+        backgroundColor: "transparent",
+        color: "white",
+        position: "absolute",
+        top: "50%",
+        right: 0,
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        marginRight: "1.2rem",
+      }}
+      onClick={onClick}
+    ></IconButton>
+  );
+};
+// Pil för att svipe till vänster
+const PrevArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <IconButton
+      className={className}
+      style={{
+        ...style,
+        backgroundColor: "transparent",
+        color: "white",
+        position: "absolute",
+        top: "50%",
+        left: 0,
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        marginLeft: "1rem",
+      }}
+      onClick={onClick}
+    ></IconButton>
+  );
+};
 
-export default Trending;
+export default Carousell;

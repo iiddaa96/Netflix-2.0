@@ -41,6 +41,15 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
+        style={{
+          marginTop: "1rem",
+          padding: "8px 12px",
+          borderRadius: "20px",
+          backgroundColor: "#f8f8f8",
+          width: "100%",
+          boxSizing: "border-box",
+          outline: "none",
+        }}
       />
       <ul>
         {searchResults.map((movie) => (

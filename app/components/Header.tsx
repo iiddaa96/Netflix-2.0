@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -55,29 +54,6 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Box
-              component={Link}
-              href="/"
-              sx={{
-                textDecoration: "none",
-              }}
-            >
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "black",
-                  textDecoration: "none",
-                  padding: "10px",
-                }}
-              >
-                <Image src={LogoDesktop} height={20} width={70} alt="Logo2" />
-              </Typography>
-            </Box>
           </Box>
           <Menu
             id="menu-appbar"
@@ -97,11 +73,11 @@ function ResponsiveAppBar() {
               display: { xs: "block", md: "none" },
             }}
           >
+            <Button component={Link} href="/" color="inherit">
+              Home
+            </Button>
             <Button component={Link} href="/Favorite" color="inherit">
               Favoriter
-            </Button>
-            <Button component={Link} href="/" color="inherit">
-              Trending
             </Button>
             <Button component={Link} href="/" color="inherit">
               Contact
