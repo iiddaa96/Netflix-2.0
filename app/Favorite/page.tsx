@@ -6,8 +6,6 @@ import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 const FavoritePage: React.FC = () => {
   const { favoriteMovies } = useFavoriteMovies();
 
-  // console.log("Favorite Movies:", favoriteMovies);
-
   return (
     <div
       style={{
