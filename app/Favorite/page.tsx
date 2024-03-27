@@ -10,11 +10,20 @@ const FavoritePage: React.FC = () => {
 
   return (
     <div
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "black",
+      }}
     >
       <div>
-        <Typography variant="h3" gutterBottom>
-          My Favorite Movies
+        <Typography
+          sx={{ textAlign: "center", color: "white" }}
+          variant="h4"
+          gutterBottom
+        >
+          My favorite movies
         </Typography>
         <Grid container spacing={3}>
           {favoriteMovies.map((movie) => (
