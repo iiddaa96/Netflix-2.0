@@ -1,24 +1,28 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import movies from "../Data/movies";
 
 interface SearchInputProps {
   defaultValue: string | null;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
-  const router = useRouter();
   const [inputValue, setInputValue] = useState(defaultValue || "");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
   const handleSearch = () => {
     if (inputValue.trim() !== "") {
-      router.push(`/?q=${encodeURIComponent(inputValue)}`);
+      //används för att söka genom data filen
+      const results = movies.filter((movie: any) =>
+        movie.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setSearchResults(results);
     } else {
-      router.push("/");
+      setSearchResults([]);
     }
   };
 
@@ -38,6 +42,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         onChange={handleChange}
         onKeyDown={handleKeyPress}
       />
+      <ul>
+        {searchResults.map((movie) => (
+          <li key={movie.id}>
+            <img src={movie.thumbnail} alt={movie.title} />
+            <p>{movie.title}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
