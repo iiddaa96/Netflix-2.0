@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         paddingTop: "2rem",
         paddingBottom: "2rem",
         bottom: 0,
-        width: "100vw",
+        minHeight: "15vh",
       }}
     >
       <Container>
@@ -22,24 +22,6 @@ const Footer: React.FC = () => {
         <Box mt={2} display="flex" justifyContent="center">
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             FAQ
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Help Center
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Account
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Buy Gift Cards
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Terms of Use
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Privacy
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Cookie Preferences
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Contact Us
