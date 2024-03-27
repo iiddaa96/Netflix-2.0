@@ -1,3 +1,4 @@
+"use client";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -10,33 +11,18 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import movies from "../Data/movies";
 import FilmView, { Movie } from "../components/Film-view";
+import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
-function Trending() {
+function Carousell() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
 
+  const { toggleFavorite } = useFavoriteMovies();
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie);
-  };
-
-  const toggleFavorite = (movie: Movie) => {
-    const isFavorite = favoriteMovies.some(
-      (favMovie) => favMovie.id === movie.id
-    );
-    if (isFavorite) {
-      const updatedFavorites = favoriteMovies.filter(
-        (favMovie) => favMovie.id !== movie.id
-      );
-      setFavoriteMovies(updatedFavorites);
-    } else {
-      setFavoriteMovies([...favoriteMovies, movie]);
-    }
-  };
-
-  const isFavorite = (movie: Movie) => {
-    return favoriteMovies.some((favMovie) => favMovie.id === movie.id);
   };
 
   const settings = {
@@ -45,6 +31,9 @@ function Trending() {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -73,55 +62,15 @@ function Trending() {
     ],
   };
 
-  const NextArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <IconButton
-        className={className}
-        style={{
-          ...style,
-          color: "white",
-          position: "absolute",
-          top: "50%",
-          right: 0,
-          transform: "translateY(-50%)",
-          zIndex: 1,
-          marginRight: "1.2rem",
-        }}
-        onClick={onClick}
-      ></IconButton>
-    );
-  };
-
-  const PrevArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-      <IconButton
-        className={className}
-        style={{
-          ...style,
-          color: "white",
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          transform: "translateY(-50%)",
-          zIndex: 1,
-          marginLeft: "1rem",
-        }}
-        onClick={onClick}
-      ></IconButton>
-    );
-  };
-
   return (
     <div style={{ backgroundColor: "black" }}>
       {/* Movie Carousel */}
       <div>
-        <h2 style={{ color: "white", paddingLeft: "20px" }}>Trending</h2>
+        <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
       </div>
       {/* Carousel for movies */}
-      <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
-        {movies.slice(0, 10).map((movie, index) => (
+      <Slider {...settings}>
+        {movies.map((movie, index) => (
           <div key={index}>
             <Card sx={{ width: 297 }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
@@ -136,9 +85,9 @@ function Trending() {
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <IconButton
-                    sx={{ backgroundColor: "black" }}
                     color={"error"}
                     aria-label="add to favorites"
+                    onClick={() => toggleFavorite(movie)}
                   >
                     <FavoriteIcon />
                   </IconButton>
@@ -179,4 +128,46 @@ function Trending() {
   );
 }
 
-export default Trending;
+const NextArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <IconButton
+      className={className}
+      style={{
+        ...style,
+        backgroundColor: "transparent",
+        color: "white",
+        position: "absolute",
+        top: "50%",
+        right: 0,
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        marginRight: "1.2rem",
+      }}
+      onClick={onClick}
+    ></IconButton>
+  );
+};
+
+const PrevArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <IconButton
+      className={className}
+      style={{
+        ...style,
+        backgroundColor: "transparent",
+        color: "white",
+        position: "absolute",
+        top: "50%",
+        left: 0,
+        transform: "translateY(-50%)",
+        zIndex: 1,
+        marginLeft: "1rem",
+      }}
+      onClick={onClick}
+    ></IconButton>
+  );
+};
+
+export default Carousell;
