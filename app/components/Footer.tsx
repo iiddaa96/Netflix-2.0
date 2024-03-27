@@ -11,6 +11,8 @@ const Footer: React.FC = () => {
         color: "#fff",
         paddingTop: "2rem",
         paddingBottom: "2rem",
+        bottom: 0,
+        minHeight: "15vh",
       }}
     >
       <Container>
@@ -22,10 +24,7 @@ const Footer: React.FC = () => {
             FAQ
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Help Center
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
-            Account
+            Contact Us
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Netflix-2.0 Originals

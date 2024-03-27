@@ -1,14 +1,14 @@
 "use client";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
-  Box,
   Card,
   CardActionArea,
   CardActions,
   CardMedia,
   IconButton,
-  Typography,
 } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -79,8 +79,8 @@ function Carousell({ title, movies }: ICarousell) {
       </div>
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
         {movies.map((movie) => (
-          <div key={movie.id}>
-            <Card sx={{ width: 297 }}>
+          <div key={movie.id} style={{ padding: "0 10px" }}>
+            <Card sx={{ maxWidth: "95%", width: "auto" }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
