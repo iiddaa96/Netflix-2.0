@@ -96,6 +96,7 @@ function Carousell({ title, movies }: ICarousell) {
                     sx={{ backgroundColor: "black" }}
                     color={"error"}
                     aria-label="add to favorites"
+                    onClick={() => toggleFavorite(movie)}
                   >
                     <FavoriteIcon />
                   </IconButton>

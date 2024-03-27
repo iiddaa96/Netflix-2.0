@@ -1,6 +1,6 @@
 "use client";
-
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
+
 const FavoritePage = () => {
   const { favoriteMovies } = useFavoriteMovies();
 
@@ -15,7 +15,6 @@ const FavoritePage = () => {
           <div key={movie.id}>
             <h2>{movie.title}</h2>
             <img src={movie.thumbnail} alt={movie.title} />
-            {/* Du kan lägga till ytterligare information om filmen här */}
           </div>
         ))}
       </div>
