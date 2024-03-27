@@ -22,7 +22,7 @@ function MovieList() {
             display: "flex",
             alignContent: "center",
           }}
-          src="https://www.youtube.com/embed/U2Qp5pL3ovA"
+          src="/gladiator.mp4"
           title="Dune Part Two Trailer"
           allowFullScreen
         ></iframe>
