@@ -34,10 +34,8 @@ function Carousell({ title, movies }: ICarousell) {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     swipeToSlide: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
