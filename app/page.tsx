@@ -32,11 +32,11 @@ function MovieList() {
         title="Trending"
         movies={movies.filter((movie) => movie.id >= 20 && movie.id <= 28)}
       />
-      <Carousell title="All movies" movies={movies} />
       <Carousell
         title="Recommended for you"
         movies={movies.filter((movie) => movie.id >= 13 && movie.id <= 19)}
       />
+      <Carousell title="All movies" movies={movies} />
     </div>
   );
 }
