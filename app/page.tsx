@@ -185,32 +185,14 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import movies from "./Data/movies";
 import FilmView, { Movie } from "./components/Film-view";
-import Trending from "./components/Trending";
+import { useFavoriteMovies } from "./context/FavoriteMoviesContext";
 
 function MovieList() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
 
+  const { toggleFavorite } = useFavoriteMovies();
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie);
-  };
-
-  const toggleFavorite = (movie: Movie) => {
-    const isFavorite = favoriteMovies.some(
-      (favMovie) => favMovie.id === movie.id
-    );
-    if (isFavorite) {
-      const updatedFavorites = favoriteMovies.filter(
-        (favMovie) => favMovie.id !== movie.id
-      );
-      setFavoriteMovies(updatedFavorites);
-    } else {
-      setFavoriteMovies([...favoriteMovies, movie]);
-    }
-  };
-
-  const isFavorite = (movie: Movie) => {
-    return favoriteMovies.some((favMovie) => favMovie.id === movie.id);
   };
 
   const settings = {
@@ -273,7 +255,7 @@ function MovieList() {
           allowFullScreen
         ></iframe>
       </div>
-      <Trending />
+      {/* <Trending /> */}
       {/* Movie Carousel */}
       <div>
         <h2 style={{ color: "white", paddingLeft: "20px" }}>All movies</h2>
