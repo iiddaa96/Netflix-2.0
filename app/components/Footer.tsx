@@ -11,6 +11,8 @@ const Footer: React.FC = () => {
         color: "#fff",
         paddingTop: "2rem",
         paddingBottom: "2rem",
+        bottom: 0,
+        width: "100vw",
       }}
     >
       <Container>
@@ -26,6 +28,21 @@ const Footer: React.FC = () => {
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Account
+          </Typography>
+          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
+            Buy Gift Cards
+          </Typography>
+          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
+            Terms of Use
+          </Typography>
+          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
+            Privacy
+          </Typography>
+          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
+            Cookie Preferences
+          </Typography>
+          <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
+            Contact Us
           </Typography>
           <Typography variant="body2" component="span" sx={{ marginRight: 2 }}>
             Netflix-2.0 Originals
