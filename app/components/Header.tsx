@@ -1,5 +1,4 @@
 "use client";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Menu } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -27,7 +26,7 @@ function ResponsiveAppBar() {
   };
   return (
     <AppBar
-      position="static"
+      position="fixed"
       component="header"
       sx={{ backgroundColor: "black" }}
     >
@@ -41,6 +40,7 @@ function ResponsiveAppBar() {
               overflow: "hidden",
               marginRight: "30rem",
               marginTop: "1rem",
+              marginBottom: "1rem",
             }}
           >
             <Image src={LogoDesktop} height={40} width={130} alt="Logo" />

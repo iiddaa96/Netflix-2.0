@@ -3,8 +3,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Movie } from "../components/Film-view"; // Anta att Movie är filnamnet
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
+import { Movie } from "./FilmView"; // Anta att Movie är filnamnet
 
 interface FavoriteButtonProps {
   movie: Movie;
