@@ -1,5 +1,11 @@
 "use client";
-import React, { ReactNode, createContext, useContext, useState } from "react";
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type Movie = {
   id: number;
@@ -11,7 +17,7 @@ type Movie = {
 };
 
 type FavoriteMoviesContextType = {
-  favoriteMovies: Movie[];
+  favoriteMovies?: Movie[]; // Making favoriteMovies optional
   toggleFavorite: (movie: Movie) => void;
 };
 
@@ -36,21 +42,35 @@ interface FavoriteMoviesProviderProps {
 export const FavoriteMoviesProvider: React.FC<FavoriteMoviesProviderProps> = ({
   children,
 }) => {
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
+  const [favoriteMovies, setFavoriteMovies] = useState<Movie[] | undefined>(
+    () => {
+      const storedFavorites = localStorage.getItem("favoriteMovies");
+      return storedFavorites ? JSON.parse(storedFavorites) : undefined;
+    }
+  );
 
   const toggleFavorite = (movie: Movie) => {
-    const isFavorite = favoriteMovies.some(
-      (favMovie) => favMovie.id === movie.id
-    );
-    if (isFavorite) {
-      const updatedFavorites = favoriteMovies.filter(
-        (favMovie) => favMovie.id !== movie.id
+    setFavoriteMovies((prevFavorites) => {
+      if (!prevFavorites) {
+        return [movie];
+      }
+
+      const isFavorite = prevFavorites.some(
+        (favMovie) => favMovie.id === movie.id
       );
-      setFavoriteMovies(updatedFavorites);
-    } else {
-      setFavoriteMovies([...favoriteMovies, movie]);
-    }
+      if (isFavorite) {
+        return prevFavorites.filter((favMovie) => favMovie.id !== movie.id);
+      } else {
+        return [...prevFavorites, movie];
+      }
+    });
   };
+
+  useEffect(() => {
+    if (favoriteMovies !== undefined) {
+      localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
+    }
+  }, [favoriteMovies]);
 
   return (
     <FavoriteMoviesContext.Provider value={{ favoriteMovies, toggleFavorite }}>
