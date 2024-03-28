@@ -114,14 +114,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         onChange={handleChange}
         onKeyDown={handleKeyPress}
         style={{
-          width: "100%",
+          marginTop: "1rem",
+          marginLeft: "9rem",
           padding: "8px 12px",
           borderRadius: "20px",
           backgroundColor: "#f8f8f8",
+          width: "50%",
           boxSizing: "border-box",
           outline: "none",
-          border: "none",
-          marginTop: "1rem",
         }}
       />
       <ul style={{ listStyle: "none", padding: 0 }}>
