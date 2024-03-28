@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import FavouriteButton from "./FavouriteButton";
 
 export interface FilmViewProps {
   movie: Movie;
@@ -108,6 +109,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           <p>
             <strong>Actors:</strong> {movie.actors.join(", ")}
           </p>
+          <FavouriteButton movie={movie} />
         </section>
       </div>
     </div>
