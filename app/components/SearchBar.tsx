@@ -1,13 +1,7 @@
 "use client";
 import { useState } from "react";
 import movies from "../Data/movies";
-import Film-view from "../components/Film-view";
-
-interface Movie {
-  id: number;
-  thumbnail: string;
-  title: string;
-}
+import FilmView, { Movie } from "../components/FilmView";
 
 interface SearchInputProps {
   defaultValue: string | null;
@@ -21,10 +15,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
-  const handleClick = (movie: Movie) => {
-    setSelectedMovie(movie);
-  };
-
 
   const handleSearch = () => {
     if (inputValue.trim() !== "") {
@@ -35,6 +25,10 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
     } else {
       setSearchResults([]);
     }
+  };
+
+  const handleMovieClick = (movie: Movie) => {
+    setSelectedMovie(movie);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -63,13 +57,19 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
           outline: "none",
         }}
       />
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul style={{ listStyle: "none", padding: 0, position: "absolute" }}>
         {searchResults.map((movie) => (
           <li
             key={movie.id}
             style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}
           >
-           <button onClick={() => handleClick(movie)}>
+            <button
+              style={{
+                backgroundColor: "lightgray",
+                color: "white",
+              }}
+              onClick={() => handleMovieClick(movie)}
+            >
               <img
                 src={movie.thumbnail}
                 alt={movie.title}
@@ -87,6 +87,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
           </li>
         ))}
       </ul>
+      {selectedMovie && (
+        <FilmView
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </div>
   );
 };

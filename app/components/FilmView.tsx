@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-interface FilmViewProps {
+export interface FilmViewProps {
   movie: Movie;
   onClose: () => void;
 }
@@ -66,13 +66,15 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       className="film-view-overlay"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
-        position: "fixed",
+        position: "absolute",
+        top: "0",
+        left: "0",
         zIndex: 9999,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "100%",
+        minHeight: "50vh",
       }}
     >
       <div
@@ -93,7 +95,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         <img
           src={movie.thumbnail}
           alt="Movie Thumbnail"
-          style={{ width: "35%", marginRight: "20px" }}
+          style={{ width: "35%", minHeight: "30vh", marginRight: "20px" }}
         />
         <section style={{ width: "50%" }}>
           <h2>{movie.title}</h2>
