@@ -28,6 +28,7 @@ function FavoriteButton({ movie }: FavoriteButtonProps) {
 
   return (
     <IconButton
+      // Är filmen en favorit så blir det ett helfärgat hjärta
       aria-label="toggle favorite"
       onClick={handleClick}
       style={{
@@ -35,6 +36,7 @@ function FavoriteButton({ movie }: FavoriteButtonProps) {
         padding: 0,
       }}
     >
+      {/* Är filmen inte en favorit så blir det en border hjärta */}
       {isFavorite ? (
         <FavoriteIcon style={{ fontSize: 24, color: "white" }} />
       ) : (
@@ -42,7 +44,6 @@ function FavoriteButton({ movie }: FavoriteButtonProps) {
           style={{
             fontSize: 24,
             color: "white",
-
             borderRadius: "50%",
           }}
         />
