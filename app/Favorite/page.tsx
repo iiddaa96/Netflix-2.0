@@ -7,12 +7,19 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import FavoriteButton from "../components/FavouriteButton";
-import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
+import { Movie, useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
 const FavoritePage: React.FC = () => {
   const { favoriteMovies } = useFavoriteMovies();
+
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
+  const { toggleFavorite } = useFavoriteMovies();
+  const handleMovieClick = (movie: Movie) => {
+    setSelectedMovie(movie);
+  };
 
   return (
     <div
@@ -42,7 +49,7 @@ const FavoritePage: React.FC = () => {
                 border: "none",
               }}
             >
-              <CardActionArea>
+              <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
                   height="300"

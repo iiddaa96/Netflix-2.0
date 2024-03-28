@@ -8,7 +8,7 @@ export type Movie = {
   title: string;
   genre: string;
   thumbnail: string;
-  synopsis?: string;
+  synopsis: string;
   actors: string[];
 };
 
