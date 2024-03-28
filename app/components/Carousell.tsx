@@ -79,8 +79,8 @@ function Carousell({ title, movies }: ICarousell) {
       </div>
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
         {movies.map((movie) => (
-          <div key={movie.id} style={{ padding: "0 10px" }}>
-            <Card sx={{ maxWidth: "95%", width: "auto" }}>
+          <div key={movie.id}>
+            <Card sx={{ maxWidth: "95%", width: "auto", marginLeft: "7px" }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
