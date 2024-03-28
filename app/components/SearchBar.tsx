@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import movies from "../Data/movies";
+import Film-view from "../components/Film-view";
 
 interface Movie {
   id: number;
@@ -15,10 +16,15 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
   const [inputValue, setInputValue] = useState(defaultValue || "");
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
+  const handleClick = (movie: Movie) => {
+    setSelectedMovie(movie);
+  };
+
 
   const handleSearch = () => {
     if (inputValue.trim() !== "") {
@@ -63,19 +69,21 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
             key={movie.id}
             style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}
           >
-            <img
-              src={movie.thumbnail}
-              alt={movie.title}
-              style={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "50%",
-                marginRight: "10px",
-              }}
-            />
-            <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
-              {movie.title}
-            </p>
+           <button onClick={() => handleClick(movie)}>
+              <img
+                src={movie.thumbnail}
+                alt={movie.title}
+                style={{
+                  width: "35px",
+                  height: "35px",
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                }}
+              />
+              <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
+                {movie.title}
+              </p>
+            </button>
           </li>
         ))}
       </ul>

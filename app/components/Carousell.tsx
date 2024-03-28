@@ -12,9 +12,9 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import FilmView, { Movie } from "../components/Film-view";
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 import FavouriteButton from "./FavouriteButton";
+import FilmView, { Movie } from "./FilmView";
 
 interface ICarousell {
   title: string;
