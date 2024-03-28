@@ -15,7 +15,8 @@ function MovieList() {
           alignItems: "center",
         }}
       >
-        <iframe
+        <video
+          id="trailer-video"
           style={{
             width: "100%",
             height: "30rem",
@@ -23,9 +24,11 @@ function MovieList() {
             alignContent: "center",
           }}
           src="/gladiator.mp4"
-          title="Dune Part Two Trailer"
-          allowFullScreen
-        ></iframe>
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
       </div>
       {/* -------Karuseller här------ */}
       <Carousell
