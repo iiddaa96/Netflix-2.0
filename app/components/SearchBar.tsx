@@ -65,8 +65,13 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
           >
             <button
               style={{
-                backgroundColor: "lightgray",
+                backgroundColor: "black",
                 color: "white",
+                border: "none",
+                borderRadius: "5px",
+                padding: "8px 16px",
+                display: "flex",
+                alignItems: "center",
               }}
               onClick={() => handleMovieClick(movie)}
             >
