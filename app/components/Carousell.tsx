@@ -1,5 +1,4 @@
 "use client";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Card,
   CardActionArea,
@@ -15,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import FilmView, { Movie } from "../components/Film-view";
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
+import FavouriteButton from "./FavouriteButton";
 
 interface ICarousell {
   title: string;
@@ -79,8 +79,8 @@ function Carousell({ title, movies }: ICarousell) {
       </div>
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
         {movies.map((movie) => (
-          <div key={movie.id} style={{ padding: "0 10px" }}>
-            <Card sx={{ maxWidth: "95%", width: "auto" }}>
+          <div key={movie.id}>
+            <Card sx={{ maxWidth: "95%", width: "auto", marginLeft: "7px" }}>
               <CardActionArea onClick={() => handleMovieClick(movie)}>
                 <CardMedia
                   component="img"
@@ -89,17 +89,9 @@ function Carousell({ title, movies }: ICarousell) {
                   alt={movie.title}
                 />
               </CardActionArea>
-              {/* Button for favorites */}
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
-                  <IconButton
-                    sx={{ backgroundColor: "black" }}
-                    color={"error"}
-                    aria-label="add to favorites"
-                    onClick={() => toggleFavorite(movie)}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
+                  <FavouriteButton movie={movie} />
                   <Typography variant="subtitle2" sx={{ color: "white" }}>
                     Year: {movie.year}
                   </Typography>
