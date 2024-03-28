@@ -1,20 +1,11 @@
 "use client";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardMedia,
-  IconButton,
-} from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { IconButton } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import FilmView, { Movie } from "../components/Film-view";
-import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
+import FavoriteButton from "./FavouriteButton";
 
 interface ICarousell {
   title: string;
@@ -24,10 +15,10 @@ interface ICarousell {
 function Carousell({ title, movies }: ICarousell) {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const { toggleFavorite } = useFavoriteMovies();
-  const handleMovieClick = (movie: Movie) => {
-    setSelectedMovie(movie);
-  };
+  // const { toggleFavorite } = useFavoriteMovies();
+  // const handleMovieClick = (movie: Movie) => {
+  //   setSelectedMovie(movie);
+  // };
 
   const settings = {
     dots: true,
@@ -80,35 +71,19 @@ function Carousell({ title, movies }: ICarousell) {
       <Slider {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />}>
         {movies.map((movie) => (
           <div key={movie.id} style={{ padding: "0 10px" }}>
-            <Card sx={{ maxWidth: "95%", width: "auto" }}>
-              <CardActionArea onClick={() => handleMovieClick(movie)}>
-                <CardMedia
-                  component="img"
-                  height="300"
-                  image={movie.thumbnail}
-                  alt={movie.title}
-                />
-              </CardActionArea>
-              {/* Button for favorites */}
-              <Box>
-                <CardActions sx={{ backgroundColor: "black" }}>
-                  <IconButton
-                    sx={{ backgroundColor: "black" }}
-                    color={"error"}
-                    aria-label="add to favorites"
-                    onClick={() => toggleFavorite(movie)}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
-                  <Typography variant="subtitle2" sx={{ color: "white" }}>
-                    Year: {movie.year}
-                  </Typography>
-                  <Typography variant="subtitle2" sx={{ color: "white" }}>
-                    Rating: {movie.rating}
-                  </Typography>
-                </CardActions>
-              </Box>
-            </Card>
+            <div style={{ position: "relative" }}>
+              <img
+                src={movie.thumbnail}
+                alt={movie.title}
+                style={{ width: "100%" }}
+              />
+              <FavoriteButton movie={movie} />
+            </div>
+            <div style={{ color: "white", textAlign: "center" }}>
+              <p>{movie.title}</p>
+              <p>Year: {movie.year}</p>
+              <p>Rating: {movie.rating}</p>
+            </div>
           </div>
         ))}
       </Slider>
