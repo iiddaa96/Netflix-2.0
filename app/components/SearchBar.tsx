@@ -9,14 +9,26 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
   const [inputValue, setInputValue] = useState(defaultValue || "");
   const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
+  // lagt till autocomplete och search funktionalitet för att få up suggestions
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+    if (value.trim() !== "") {
+      const suggestions = movies
+        .filter((movie: any) =>
+          movie.title.toLowerCase().includes(value.toLowerCase())
+        )
+        .map((movie: any) => movie.title);
+      setSuggestions(suggestions);
+    } else {
+      setSuggestions([]);
+    }
   };
 
   const handleSearch = () => {
     if (inputValue.trim() !== "") {
-      //används för att söka genom data filen
       const results = movies.filter((movie: any) =>
         movie.title.toLowerCase().includes(inputValue.toLowerCase())
       );
@@ -41,6 +53,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
+        list="suggestions"
         style={{
           marginTop: "1rem",
           padding: "8px 12px",
@@ -51,6 +64,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
           outline: "none",
         }}
       />
+      <datalist id="suggestions">
+        {suggestions.map((suggestion, index) => (
+          <option key={index} value={suggestion} />
+        ))}
+      </datalist>
       <ul>
         {searchResults.map((movie) => (
           <li key={movie.id}>
