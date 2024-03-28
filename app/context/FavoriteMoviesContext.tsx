@@ -1,13 +1,15 @@
 "use client";
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
-type Movie = {
+export type Movie = {
   id: number;
   year: number;
   rating: string;
   title: string;
   genre: string;
   thumbnail: string;
+  synopsis?: string;
+  actors: string[];
 };
 
 type FavoriteMoviesContextType = {

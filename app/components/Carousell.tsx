@@ -89,7 +89,6 @@ function Carousell({ title, movies }: ICarousell) {
                   alt={movie.title}
                 />
               </CardActionArea>
-              {/* Button for favorites */}
               <Box>
                 <CardActions sx={{ backgroundColor: "black" }}>
                   <FavouriteButton movie={movie} />

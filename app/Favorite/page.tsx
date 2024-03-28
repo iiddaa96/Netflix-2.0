@@ -1,6 +1,14 @@
 "use client";
-import { Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React from "react";
+import FavoriteButton from "../components/FavouriteButton";
 import { useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
 const FavoritePage: React.FC = () => {
@@ -13,37 +21,57 @@ const FavoritePage: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "black",
+        padding: "20px",
       }}
     >
-      <div>
-        <Typography
-          sx={{ textAlign: "center", color: "white" }}
-          variant="h4"
-          gutterBottom
-        >
-          My favorite movies
-        </Typography>
-        <Grid container spacing={3}>
-          {favoriteMovies.map((movie) => (
-            <Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
-              <div style={{ textAlign: "center" }}>
-                <img
-                  src={movie.thumbnail}
+      <Typography
+        sx={{ textAlign: "center", color: "white", marginBottom: "20px" }}
+        variant="h4"
+        gutterBottom
+      >
+        My favorite movies
+      </Typography>
+      <Grid container spacing={3}>
+        {favoriteMovies.map((movie) => (
+          <Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
+            <Card
+              sx={{
+                maxWidth: "95%",
+                width: "auto",
+                backgroundColor: "transparent",
+                border: "none",
+              }}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={movie.thumbnail}
                   alt={movie.title}
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                    borderRadius: "8px",
-                  }}
+                  style={{ borderRadius: "8px" }}
                 />
-                <Typography variant="h6" gutterBottom>
-                  {movie.title}
+              </CardActionArea>
+              <CardActions
+                sx={{ backgroundColor: "black", justifyContent: "center" }}
+              >
+                <FavoriteButton movie={movie} />
+                <Typography
+                  variant="subtitle2"
+                  sx={{ color: "white", marginLeft: "10px" }}
+                >
+                  Year: {movie.year}
                 </Typography>
-              </div>
-            </Grid>
-          ))}
-        </Grid>
-      </div>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ color: "white", marginLeft: "10px" }}
+                >
+                  Rating: {movie.rating}
+                </Typography>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };
