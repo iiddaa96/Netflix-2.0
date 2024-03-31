@@ -146,7 +146,7 @@ const NextArrow = (props: any) => {
         transform: "translateY(-50%)",
         zIndex: 1,
         marginRight: "1.2rem",
-        fontSize: "40",
+        fontSize: "45",
       }}
       onClick={onClick}
     ></IconButton>
@@ -168,7 +168,7 @@ const PrevArrow = (props: any) => {
         transform: "translateY(-50%)",
         zIndex: 1,
         marginLeft: "1rem",
-        fontSize: "40",
+        fontSize: "45",
       }}
       onClick={onClick}
     ></IconButton>
