@@ -9,15 +9,14 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
   const [inputValue, setInputValue] = useState(defaultValue || "");
-
-  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [, setSearchResults] = useState<Movie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  // lagt till autocomplete och search funktionalitet för att få up suggestions
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
+
     if (value.trim() !== "") {
       const suggestions = movies
         .filter((movie: any) =>
@@ -25,8 +24,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         )
         .map((movie: any) => movie.title);
       setSuggestions(suggestions);
-    } else {
-      setSuggestions([]);
     }
   };
 
@@ -45,10 +42,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
     setSelectedMovie(movie);
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSearch();
+  const handleSuggestionClick = (suggestion: string) => {
+    const clickedMovie = movies.find(
+      (movie) => movie.title.toLowerCase() === suggestion.toLowerCase()
+    );
+    if (clickedMovie) {
+      handleMovieClick(clickedMovie);
     }
+    setSuggestions([]);
   };
 
   return (
@@ -59,7 +60,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         placeholder="Search"
         value={inputValue}
         onChange={handleChange}
-        onKeyDown={handleKeyPress}
         list="suggestions"
         style={{
           marginTop: "1rem",
@@ -73,44 +73,28 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         }}
       />
 
-      <ul style={{ listStyle: "none", padding: 0, position: "absolute" }}>
-        <datalist id="suggestions">
-          {suggestions.map((suggestion, index) => (
-            <option key={index} value={suggestion} />
-          ))}
-        </datalist>
-
-        {searchResults.map((movie) => (
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          position: "absolute",
+          backgroundColor: "white",
+          borderRadius: "5px",
+          color: "black",
+        }}
+      >
+        {suggestions.map((suggestion, index) => (
           <li
-            key={movie.id}
-            style={{ display: "flex", alignItems: "center", marginTop: "1rem" }}
+            key={index}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: "1rem",
+              cursor: "pointer",
+            }}
+            onClick={() => handleSuggestionClick(suggestion)}
           >
-            <button
-              style={{
-                backgroundColor: "black",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-                padding: "8px 16px",
-                display: "flex",
-                alignItems: "center",
-              }}
-              onClick={() => handleMovieClick(movie)}
-            >
-              <img
-                src={movie.thumbnail}
-                alt={movie.title}
-                style={{
-                  width: "35px",
-                  height: "35px",
-                  borderRadius: "50%",
-                  marginRight: "10px",
-                }}
-              />
-              <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
-                {movie.title}
-              </p>
-            </button>
+            {suggestion}
           </li>
         ))}
       </ul>
