@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import FavouriteButton from "./FavouriteButton";
 
@@ -48,6 +48,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       let newWidth = thumbnailWidth;
       let newHeight = thumbnailHeight;
 
+      // Justera bredd och höjd samtidigt som aspect ratio bibehålls
       if (newWidth > maxWidth) {
         newWidth = maxWidth;
         newHeight = newWidth / aspectRatio;
@@ -75,48 +76,47 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        minHeight: "0vh",
+        minHeight: "100vh",
       }}
     >
       <Box
         ref={filmViewRef}
         className="film-view-content"
         sx={{
-          display: "flex",
           backgroundColor: "rgba(211, 211, 211, 0.4)",
           color: "white",
           textShadow: "1px 1px 2px black",
           padding: "20px",
           borderRadius: "8px",
           overflowY: "auto",
-          maxHeight: { xs: "55vh", md: "80vh" },
-          marginTop: "7vh",
-          maxWidth: { xs: "100vw", md: "80vw" },
+          maxHeight: "80vh",
+          width: "90%",
+          maxWidth: "600px", // Set a fixed width for the gray box
+          mt: "7vh",
+          minHeight: "75vh",
         }}
       >
-        <Box
-          component="img"
-          src={movie.thumbnail}
-          alt="Movie Thumbnail"
-          sx={{
-            width: { xs: "70%", md: "25%" },
-            height: { xs: "35vh", md: "25vh" },
-            mr: { xs: 2, md: 2 },
-          }}
-        />
-        <section style={{ width: "50%" }}>
-          <h2>{movie.title}</h2>
-          <p>
-            <strong>Genre:</strong> {movie.genre}
-          </p>
-          <p>
-            <strong>Synopsis:</strong> {movie.synopsis}
-          </p>
-          <p>
-            <strong>Actors:</strong> {movie.actors.join(", ")}
-          </p>
-          <FavouriteButton movie={movie} />
-        </section>
+        <Card sx={{ marginBottom: 2, width: "40vh" }}>
+          <CardMedia
+            component="img"
+            image={movie.thumbnail}
+            alt="Movie Thumbnail"
+            sx={{ height: "auto", width: "100%" }}
+          />
+        </Card>
+        <Typography variant="h4" sx={{ mb: 1 }}>
+          {movie.title}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 1 }}>
+          <strong>Genre:</strong> {movie.genre}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 1 }}>
+          <strong>Synopsis:</strong> {movie.synopsis}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 2 }}>
+          <strong>Actors:</strong> {movie.actors.join(", ")}
+        </Typography>
+        <FavouriteButton movie={movie} />
       </Box>
     </Box>
   );
