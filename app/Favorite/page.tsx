@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   Card,
   CardActionArea,
   CardActions,
@@ -21,7 +22,7 @@ const FavoritePage: React.FC = () => {
   };
 
   return (
-    <div
+    <Box
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -84,7 +85,7 @@ const FavoritePage: React.FC = () => {
             </Grid>
           ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 
