@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import FavouriteButton from "./FavouriteButton";
 
@@ -47,7 +48,6 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
       let newWidth = thumbnailWidth;
       let newHeight = thumbnailHeight;
 
-      // Justera bredd och höjd samtidigt som aspect ratio bibehålls
       if (newWidth > maxWidth) {
         newWidth = maxWidth;
         newHeight = newWidth / aspectRatio;
@@ -63,9 +63,9 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
   }, [movie.thumbnail]);
 
   return (
-    <div
+    <Box
       className="film-view-overlay"
-      style={{
+      sx={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "absolute",
         top: "0",
@@ -75,13 +75,13 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        minHeight: "50vh",
+        minHeight: "0vh",
       }}
     >
-      <div
+      <Box
         ref={filmViewRef}
         className="film-view-content"
-        style={{
+        sx={{
           display: "flex",
           backgroundColor: "rgba(211, 211, 211, 0.4)",
           color: "white",
@@ -89,15 +89,20 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           padding: "20px",
           borderRadius: "8px",
           overflowY: "auto",
-          maxHeight: "80vh",
-          maxWidth: "80vw",
+          maxHeight: { xs: "55vh", md: "80vh" },
           marginTop: "7vh",
+          maxWidth: { xs: "100vw", md: "80vw" },
         }}
       >
-        <img
+        <Box
+          component="img"
           src={movie.thumbnail}
           alt="Movie Thumbnail"
-          style={{ width: "35%", minHeight: "30vh", marginRight: "20px" }}
+          sx={{
+            width: { xs: "70%", md: "25%" },
+            height: { xs: "35vh", md: "25vh" },
+            mr: { xs: 2, md: 2 },
+          }}
         />
         <section style={{ width: "50%" }}>
           <h2>{movie.title}</h2>
@@ -112,8 +117,8 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           </p>
           <FavouriteButton movie={movie} />
         </section>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
