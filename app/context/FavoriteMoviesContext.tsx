@@ -46,8 +46,11 @@ export const FavoriteMoviesProvider: React.FC<FavoriteMoviesProviderProps> = ({
 }) => {
   const [favoriteMovies, setFavoriteMovies] = useState<Movie[] | undefined>(
     () => {
-      const storedFavorites = localStorage.getItem("favoriteMovies");
-      return storedFavorites ? JSON.parse(storedFavorites) : undefined;
+      if (typeof window !== "undefined") {
+        const storedFavorites = localStorage.getItem("favoriteMovies");
+        return storedFavorites ? JSON.parse(storedFavorites) : undefined;
+      }
+      return undefined;
     }
   );
 
@@ -69,7 +72,7 @@ export const FavoriteMoviesProvider: React.FC<FavoriteMoviesProviderProps> = ({
   };
 
   useEffect(() => {
-    if (favoriteMovies !== undefined) {
+    if (favoriteMovies !== undefined && typeof window !== "undefined") {
       localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
     }
   }, [favoriteMovies]);
