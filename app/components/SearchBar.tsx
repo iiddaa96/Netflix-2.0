@@ -24,6 +24,8 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         )
         .map((movie: any) => movie.title);
       setSuggestions(suggestions);
+    } else {
+      setSuggestions([]);
     }
   };
 
@@ -75,22 +77,22 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
 
       <ul
         style={{
-          listStyle: "none",
           padding: 0,
           position: "absolute",
           backgroundColor: "white",
           borderRadius: "5px",
           color: "black",
+          marginLeft: "9rem",
         }}
       >
         {suggestions.map((suggestion, index) => (
+          // Styleing på listan som dyker upp när man söker
           <li
             key={index}
             style={{
               display: "flex",
-              alignItems: "center",
-              marginTop: "1rem",
               cursor: "pointer",
+              margin: "0.5rem",
             }}
             onClick={() => handleSuggestionClick(suggestion)}
           >
