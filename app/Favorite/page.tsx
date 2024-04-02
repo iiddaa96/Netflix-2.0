@@ -31,7 +31,12 @@ const FavoritePage: React.FC = () => {
       }}
     >
       <Typography
-        sx={{ textAlign: "center", color: "white", marginBottom: "20px" }}
+        sx={{
+          textAlign: "center",
+          color: "white",
+          marginTop: "60px",
+          marginBottom: "20px",
+        }}
         variant="h4"
         gutterBottom
       >
