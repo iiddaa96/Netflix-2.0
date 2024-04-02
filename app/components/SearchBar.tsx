@@ -24,6 +24,8 @@ const SearchInput: React.FC<SearchInputProps> = ({ defaultValue }) => {
         )
         .map((movie: any) => movie.title);
       setSuggestions(suggestions);
+    } else {
+      setSuggestions([]);
     }
   };
 
