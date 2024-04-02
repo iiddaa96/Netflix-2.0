@@ -1,4 +1,5 @@
 "use client";
+import { Box, Card, CardMedia, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import FavouriteButton from "./FavouriteButton";
 
@@ -63,9 +64,9 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
   }, [movie.thumbnail]);
 
   return (
-    <div
+    <Box
       className="film-view-overlay"
-      style={{
+      sx={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "absolute",
         top: "0",
@@ -75,14 +76,13 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        minHeight: "50vh",
+        minHeight: "100vh",
       }}
     >
-      <div
+      <Box
         ref={filmViewRef}
         className="film-view-content"
-        style={{
-          display: "flex",
+        sx={{
           backgroundColor: "rgba(211, 211, 211, 0.4)",
           color: "white",
           textShadow: "1px 1px 2px black",
@@ -90,30 +90,35 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           borderRadius: "8px",
           overflowY: "auto",
           maxHeight: "80vh",
-          maxWidth: "80vw",
-          marginTop: "7vh",
+          width: "90%",
+          maxWidth: "600px", // Set a fixed width for the gray box
+          mt: "7vh",
+          minHeight: "75vh",
         }}
       >
-        <img
-          src={movie.thumbnail}
-          alt="Movie Thumbnail"
-          style={{ width: "35%", minHeight: "30vh", marginRight: "20px" }}
-        />
-        <section style={{ width: "50%" }}>
-          <h2>{movie.title}</h2>
-          <p>
-            <strong>Genre:</strong> {movie.genre}
-          </p>
-          <p>
-            <strong>Synopsis:</strong> {movie.synopsis}
-          </p>
-          <p>
-            <strong>Actors:</strong> {movie.actors.join(", ")}
-          </p>
-          <FavouriteButton movie={movie} />
-        </section>
-      </div>
-    </div>
+        <Card sx={{ marginBottom: 2, width: "40vh" }}>
+          <CardMedia
+            component="img"
+            image={movie.thumbnail}
+            alt="Movie Thumbnail"
+            sx={{ height: "auto", width: "100%" }}
+          />
+        </Card>
+        <Typography variant="h4" sx={{ mb: 1 }}>
+          {movie.title}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 1 }}>
+          <strong>Genre:</strong> {movie.genre}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 1 }}>
+          <strong>Synopsis:</strong> {movie.synopsis}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 2 }}>
+          <strong>Actors:</strong> {movie.actors.join(", ")}
+        </Typography>
+        <FavouriteButton movie={movie} />
+      </Box>
+    </Box>
   );
 };
 
