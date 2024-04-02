@@ -12,11 +12,10 @@ import FavoriteButton from "../components/FavouriteButton";
 import { Movie, useFavoriteMovies } from "../context/FavoriteMoviesContext";
 
 const FavoritePage: React.FC = () => {
-  const { favoriteMovies } = useFavoriteMovies();
+  const { favoriteMovies, toggleFavorite } = useFavoriteMovies();
 
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  const { toggleFavorite } = useFavoriteMovies();
   const handleMovieClick = (movie: Movie) => {
     setSelectedMovie(movie);
   };
@@ -39,45 +38,46 @@ const FavoritePage: React.FC = () => {
         My favorite movies
       </Typography>
       <Grid container spacing={3}>
-        {favoriteMovies.map((movie) => (
-          <Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
-            <Card
-              sx={{
-                maxWidth: "95%",
-                width: "auto",
-                backgroundColor: "transparent",
-                border: "none",
-              }}
-            >
-              <CardActionArea onClick={() => handleMovieClick(movie)}>
-                <CardMedia
-                  component="img"
-                  height="300"
-                  image={movie.thumbnail}
-                  alt={movie.title}
-                  style={{ borderRadius: "8px" }}
-                />
-              </CardActionArea>
-              <CardActions
-                sx={{ backgroundColor: "black", justifyContent: "center" }}
+        {favoriteMovies &&
+          favoriteMovies.map((movie) => (
+            <Grid key={movie.id} item xs={6} sm={4} md={3} lg={2}>
+              <Card
+                sx={{
+                  maxWidth: "95%",
+                  width: "auto",
+                  backgroundColor: "transparent",
+                  border: "none",
+                }}
               >
-                <FavoriteButton movie={movie} />
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: "white", marginLeft: "10px" }}
+                <CardActionArea onClick={() => handleMovieClick(movie)}>
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={movie.thumbnail}
+                    alt={movie.title}
+                    style={{ borderRadius: "8px" }}
+                  />
+                </CardActionArea>
+                <CardActions
+                  sx={{ backgroundColor: "black", justifyContent: "center" }}
                 >
-                  Year: {movie.year}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: "white", marginLeft: "10px" }}
-                >
-                  Rating: {movie.rating}
-                </Typography>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
+                  <FavoriteButton movie={movie} />
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: "white", marginLeft: "10px" }}
+                  >
+                    Year: {movie.year}
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: "white", marginLeft: "10px" }}
+                  >
+                    Rating: {movie.rating}
+                  </Typography>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
       </Grid>
     </div>
   );
