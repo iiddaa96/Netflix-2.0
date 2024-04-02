@@ -83,7 +83,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
         className="film-view-content"
         style={{
           display: "flex",
-          backgroundColor: "rgba(211, 211, 211, 0.2)",
+          backgroundColor: "rgba(211, 211, 211, 0.4)",
           color: "white",
           textShadow: "1px 1px 2px black",
           padding: "20px",
@@ -91,6 +91,7 @@ const FilmView: React.FC<FilmViewProps> = ({ movie, onClose }) => {
           overflowY: "auto",
           maxHeight: "80vh",
           maxWidth: "80vw",
+          marginTop: "7vh",
         }}
       >
         <img
