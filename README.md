@@ -20,4 +20,4 @@ This project is a replica of Netflix a popular streaming service. Built using Ne
 - [Maryamo Salad](https://github.com/Maryamakeyf)
 
 ### Checkout our project with the link below
-(https://netflix-2-0-9lecjadfr-iiddaas-projects.vercel.app/)
+(https://netflix-2-0-sandy.vercel.app/)
