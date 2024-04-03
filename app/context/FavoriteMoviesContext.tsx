@@ -19,13 +19,14 @@ export type Movie = {
 };
 
 type FavoriteMoviesContextType = {
-  favoriteMovies?: Movie[]; // Making favoriteMovies optional
+  favoriteMovies: Movie[];
   toggleFavorite: (movie: Movie) => void;
 };
 
-const FavoriteMoviesContext = createContext<
-  FavoriteMoviesContextType | undefined
->(undefined);
+const FavoriteMoviesContext = createContext<FavoriteMoviesContextType>({
+  favoriteMovies: [],
+  toggleFavorite: () => {},
+});
 
 export const useFavoriteMovies = () => {
   const context = useContext(FavoriteMoviesContext);
@@ -44,15 +45,13 @@ interface FavoriteMoviesProviderProps {
 export const FavoriteMoviesProvider: React.FC<FavoriteMoviesProviderProps> = ({
   children,
 }) => {
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[] | undefined>(
-    () => {
-      if (typeof window !== "undefined") {
-        const storedFavorites = localStorage.getItem("favoriteMovies");
-        return storedFavorites ? JSON.parse(storedFavorites) : undefined;
-      }
-      return undefined;
+  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>(() => {
+    if (typeof window !== "undefined") {
+      const storedFavorites = localStorage.getItem("favoriteMovies");
+      return storedFavorites ? JSON.parse(storedFavorites) : [];
     }
-  );
+    return [];
+  });
 
   const toggleFavorite = (movie: Movie) => {
     setFavoriteMovies((prevFavorites) => {
