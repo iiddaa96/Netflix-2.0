@@ -19,6 +19,5 @@ This project is a replica of Netflix a popular streaming service. Built using Ne
 - [Ida Casperson](https://github.com/iiddaa96)
 - [Maryamo Salad](https://github.com/Maryamakeyf)
 
-### Checkout our project with the link
-
-(`[https://netflix-2-0-9lecjadfr-iiddaas-projects.vercel.app/]`)
+### Checkout our project with the lin
+(https://netflix-2-0-9lecjadfr-iiddaas-projects.vercel.app/)
