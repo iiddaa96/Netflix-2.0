@@ -11,7 +11,7 @@ import { LayoutProps } from "./types";
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ margin: "0" }}>
         <AppRouterCacheProvider>
           <FavoriteMoviesProvider>
             <ResponsiveAppBar />
