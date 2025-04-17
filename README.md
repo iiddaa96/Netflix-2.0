@@ -2,7 +2,7 @@
 
 This project is a replica of Netflix a popular streaming service. Built using Next.js, React, TypeScript, and Material-UI. It aims to mimic the user interface and functionality of Netflix, providing a familiar experience for users.
 
-### Technologies Used
+### Technologies 
 
 1. NextJS
 2. React
